@@ -27,7 +27,15 @@
     
     self.dataController = [[LunchDataController alloc] init];
 
+    self.navigationItem.rightBarButtonItem.target = self;
+    self.navigationItem.rightBarButtonItem.action = @selector(goToday:);
+    
     [self retrieveLunch:dateShown];
+}
+
+- (void)goToday:(id)sender
+{
+    [self retrieveLunch:[NSDate date]];
 }
 
 - (void)retrieveLunch:(NSDate *)date
@@ -39,11 +47,14 @@
     
     NSDateComponents *componentsDate = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:dateShown];
     NSDateComponents *componentsToday = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
-
+    
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    
     if (componentsDate.year == componentsToday.year &&
         componentsDate.month == componentsToday.month) {
         if (componentsDate.day == componentsToday.day) {
             self.title = @"Today";
+            self.navigationItem.rightBarButtonItem.enabled = NO;
         }
         else if (componentsDate.day + 1 == componentsToday.day) {
             self.title = @"Yesterday";
@@ -120,7 +131,25 @@
     
     Course *course = [self.dataController objectInCoursesAtIndex:indexPath.row];
     cell.textLabel.text = course.titleEn;
-    
+    if ([course.category isEqual:@"Scandinavian"]) {
+        cell.imageView.image = [UIImage imageNamed:@"114.png"];
+    }
+    else if ([course.category isEqual:@"Global"]) {
+        cell.imageView.image = [UIImage imageNamed:@"58.png"];
+    }
+    else if ([course.category isEqual:@"Vegetarian"]) {
+        cell.imageView.image = [UIImage imageNamed:@"26.png"];
+    }
+    else if ([course.category isEqual:@"Salad garden & Soup"]) {
+        cell.imageView.image = [UIImage imageNamed:@"136.png"];
+    }
+    else if ([course.category isEqual:@"Sweet"]) {
+        cell.imageView.image = [UIImage imageNamed:@"146.png"];
+    }
+    else {
+        cell.imageView.image = [UIImage imageNamed:@"142.png"];
+    }
+
     return cell;
 }
 
@@ -130,7 +159,9 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Course *course = [self.dataController objectInCoursesAtIndex:indexPath.row];
         
-        [[segue destinationViewController] setCourse:course];
+        [[segue destinationViewController] setDataController:self.dataController];
+        [[segue destinationViewController] setIndex:indexPath.row];
+        //[[segue destinationViewController] setCourse:course];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "LunchDetailViewController.h"
 
+#import "LunchDataController.h"
 #import "Course.h"
 
 @interface LunchDetailViewController ()
@@ -29,12 +30,21 @@
     }
 }
 
+-(void) setIndex:(NSUInteger)index
+{
+    NSLog(@"setIndex %d", index);
+    _index = index;
+    self.course = [self.dataController objectInCoursesAtIndex:index];
+    [self configureView];
+}
+
 - (void)configureView
 {
     NSLog(@"configureView");
     // Update the user interface for the detail item.
 
     if (self.course) {
+        [self setTitle:self.course.category];
         self.nameLabel.text = self.course.titleEn;
         self.categoryLabel.text = self.course.category;
         self.propertiesLabel.text = self.course.properties;
@@ -46,6 +56,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
     [self configureView];
 }
 
@@ -55,4 +66,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender {
+    int count = [self.dataController countOfCourses];
+    if (self.index < count - 1) {
+        [self setIndex:(self.index + 1)];
+    }
+}
+
+- (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
+    if (self.index > 0) {
+        [self setIndex:(self.index - 1)];
+    }
+}
 @end

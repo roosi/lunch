@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F21010D17FED2E900DA3D16 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F21010C17FED2E900DA3D16 /* 114.png */; };
 		5F21F76517FC2CC700DA3D16 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F21F76417FC2CC700DA3D16 /* UIKit.framework */; };
 		5F21F76717FC2CC700DA3D16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F21F76617FC2CC700DA3D16 /* Foundation.framework */; };
 		5F21F76917FC2CC700DA3D16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F21F76817FC2CC700DA3D16 /* CoreGraphics.framework */; };
@@ -21,9 +22,17 @@
 		5F21F78417FC2CC700DA3D16 /* LunchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F21F78317FC2CC700DA3D16 /* LunchDetailViewController.m */; };
 		5F21F78C17FC6EE300DA3D16 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F21F78B17FC6EE300DA3D16 /* Course.m */; };
 		5F21F78F17FC733000DA3D16 /* LunchDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F21F78E17FC733000DA3D16 /* LunchDataController.m */; };
+		5F90ACAE17FED574009DB074 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACAD17FED574009DB074 /* 58.png */; };
+		5F90ACB017FF04AB009DB074 /* 26.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACAF17FF04AB009DB074 /* 26.png */; };
+		5F90ACB217FF059C009DB074 /* 146.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB117FF059C009DB074 /* 146.png */; };
+		5F90ACB417FF05FC009DB074 /* 136.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB317FF05FC009DB074 /* 136.png */; };
+		5F90ACB617FF06EB009DB074 /* 142.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB517FF06EB009DB074 /* 142.png */; };
+		5F90ACB817FF3808009DB074 /* SplashScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB717FF3808009DB074 /* SplashScreen@2x.png */; };
+		5F90ACBA17FF3820009DB074 /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB917FF3820009DB074 /* SplashScreen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F21010C17FED2E900DA3D16 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		5F21F76117FC2CC700DA3D16 /* Lunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F21F76417FC2CC700DA3D16 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5F21F76617FC2CC700DA3D16 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -46,6 +55,13 @@
 		5F21F78B17FC6EE300DA3D16 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		5F21F78D17FC733000DA3D16 /* LunchDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunchDataController.h; sourceTree = "<group>"; };
 		5F21F78E17FC733000DA3D16 /* LunchDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchDataController.m; sourceTree = "<group>"; };
+		5F90ACAD17FED574009DB074 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
+		5F90ACAF17FF04AB009DB074 /* 26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 26.png; sourceTree = "<group>"; };
+		5F90ACB117FF059C009DB074 /* 146.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 146.png; sourceTree = "<group>"; };
+		5F90ACB317FF05FC009DB074 /* 136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 136.png; sourceTree = "<group>"; };
+		5F90ACB517FF06EB009DB074 /* 142.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 142.png; sourceTree = "<group>"; };
+		5F90ACB717FF3808009DB074 /* SplashScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SplashScreen@2x.png"; sourceTree = "<group>"; };
+		5F90ACB917FF3820009DB074 /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +127,14 @@
 		5F21F76B17FC2CC700DA3D16 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F90ACB917FF3820009DB074 /* SplashScreen.png */,
+				5F90ACB717FF3808009DB074 /* SplashScreen@2x.png */,
+				5F90ACB517FF06EB009DB074 /* 142.png */,
+				5F90ACB317FF05FC009DB074 /* 136.png */,
+				5F90ACB117FF059C009DB074 /* 146.png */,
+				5F90ACAF17FF04AB009DB074 /* 26.png */,
+				5F90ACAD17FED574009DB074 /* 58.png */,
+				5F21010C17FED2E900DA3D16 /* 114.png */,
 				5F21F76C17FC2CC700DA3D16 /* Lunch-Info.plist */,
 				5F21F76D17FC2CC700DA3D16 /* InfoPlist.strings */,
 				5F21F77017FC2CC700DA3D16 /* main.m */,
@@ -179,6 +203,14 @@
 				5F21F77917FC2CC700DA3D16 /* Default@2x.png in Resources */,
 				5F21F77B17FC2CC700DA3D16 /* Default-568h@2x.png in Resources */,
 				5F21F77E17FC2CC700DA3D16 /* MainStoryboard.storyboard in Resources */,
+				5F21010D17FED2E900DA3D16 /* 114.png in Resources */,
+				5F90ACAE17FED574009DB074 /* 58.png in Resources */,
+				5F90ACB017FF04AB009DB074 /* 26.png in Resources */,
+				5F90ACB217FF059C009DB074 /* 146.png in Resources */,
+				5F90ACB417FF05FC009DB074 /* 136.png in Resources */,
+				5F90ACB617FF06EB009DB074 /* 142.png in Resources */,
+				5F90ACB817FF3808009DB074 /* SplashScreen@2x.png in Resources */,
+				5F90ACBA17FF3820009DB074 /* SplashScreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +349,7 @@
 				5F21F78917FC2CC700DA3D16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

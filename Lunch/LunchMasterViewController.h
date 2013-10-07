@@ -12,7 +12,7 @@
 
 @interface LunchMasterViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-- (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender;
 @property (strong, nonatomic) LunchDataController *dataController;
+- (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender;
 - (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender;
 @end
