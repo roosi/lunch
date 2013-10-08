@@ -28,13 +28,41 @@
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
     NSString *urlString = [NSString stringWithFormat:@"http://www.sodexo.fi/ruokalistat/output/daily_json/444/%ld/%ld/%ld/fi", (long)components.year,(long)components.month,(long)components.day];
-    NSError *error = nil;
 
     NSLog(@"%@", urlString);
     NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * response, NSData *data, NSError *error) {
+
+        if(!error) {
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
+                                                                 options:kNilOptions
+                                                                   error:&error];
+            NSLog(@"JSON: %@", jsonDict);
+            NSArray *courses = [jsonDict objectForKey:@"courses"];
+        
+            [self.courses removeAllObjects];
+            for(id object in courses) {
+                Course *course = [[Course alloc] initWithJson:object];
+                [self.courses addObject:course];
+            }
+        
+            if (callback) {
+                callback();
+            }
+        }
+        else {
+            NSLog(@"\nJSON: %@ \n Error: %@", data, error);
+        }
+        
+    }];
+    /*
+    NSError *error = nil;
     NSString *json = [NSString stringWithContentsOfURL:url
                                               encoding:NSASCIIStringEncoding
                                                  error:&error];
+                             
     if(!error) {
         NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
@@ -57,6 +85,7 @@
         NSLog(@"\nJSON: %@ \n Error: %@", json, error);
         
     }
+     */
     
 }
 

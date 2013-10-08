@@ -156,8 +156,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ShowCourse"]) {
+        NSLog(@"ShowCourse");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Course *course = [self.dataController objectInCoursesAtIndex:indexPath.row];
+        //Course *course = [self.dataController objectInCoursesAtIndex:indexPath.row];
         
         [[segue destinationViewController] setDataController:self.dataController];
         [[segue destinationViewController] setIndex:indexPath.row];
