@@ -66,10 +66,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Today" id="36">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Today" id="5Yb-lS-oYD"/>
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Today" id="5Yb-lS-oYD"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="McO-gq-bTG">
+                            <connections>
+                                <segue destination="4py-MF-rgr" kind="push" id="Jii-4B-tEp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="Kly-HN-cTI" id="k2h-do-0Nu"/>
+                        <outlet property="settingsButton" destination="5Yb-lS-oYD" id="ihE-vT-mXB"/>
+                        <outlet property="todayButton" destination="5Yb-lS-oYD" id="1YD-Ma-irb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
@@ -224,7 +231,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="993" y="577"/>
+            <point key="canvasLocation" x="993" y="-778"/>
         </scene>
         <!--Course View Controller-->
         <scene sceneID="EaG-72-F5z">
@@ -267,7 +274,206 @@
             </objects>
             <point key="canvasLocation" x="993" y="-103"/>
         </scene>
+        <!--Table View Controller - Settings-->
+        <scene sceneID="VM1-az-aFa">
+            <objects>
+                <tableViewController id="4py-MF-rgr" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="j9L-g3-cqz">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="7Pg-p6-c20">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WG8-fd-uUT">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBu-qF-lH4">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="m0F-Wo-GLk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jyväskylä" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeK-f5-iE1">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="151" id="zrI-m0-cT7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="jeK-f5-iE1" firstAttribute="baseline" secondItem="kBu-qF-lH4" secondAttribute="baseline" type="default" id="Fkj-Pg-aRz"/>
+                                            <constraint firstItem="kBu-qF-lH4" firstAttribute="centerY" secondItem="WG8-fd-uUT" secondAttribute="centerY" type="default" id="sUa-7w-22Y"/>
+                                            <constraint firstItem="jeK-f5-iE1" firstAttribute="leading" secondItem="WG8-fd-uUT" secondAttribute="leading" constant="129" id="slJ-Nw-BB5"/>
+                                            <constraint firstItem="kBu-qF-lH4" firstAttribute="leading" secondItem="WG8-fd-uUT" secondAttribute="leading" constant="30" id="tsa-V1-xJE"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="jBy-eZ-Jpl" kind="modal" id="FvN-1B-NCw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="GNa-7E-iQN">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uDF-Ff-f0I">
+                                        <rect key="frame" x="0.0" y="76" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pZX-zv-Gib">
+                                        <rect key="frame" x="0.0" y="121" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="9X0-pO-5Kv">
+                                        <rect key="frame" x="0.0" y="165" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="4py-MF-rgr" id="7oq-Wl-5s7"/>
+                            <outlet property="delegate" destination="4py-MF-rgr" id="eDc-bh-q4I"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="4Qa-oj-rcL"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="63M-x7-YS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1005" y="624"/>
+        </scene>
+        <!--Location View Controller-->
+        <scene sceneID="dGt-Pn-xD5">
+            <objects>
+                <viewController id="jBy-eZ-Jpl" customClass="LocationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jwx-q5-uvg">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Nhr-fQ-6no">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="LocationCell" textLabel="Ka4-cy-PrZ" style="IBUITableViewCellStyleDefault" id="lQV-Lf-Tp0">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka4-cy-PrZ">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jBy-eZ-Jpl" id="96L-Je-Dgj"/>
+                                    <outlet property="delegate" destination="jBy-eZ-Jpl" id="7G7-Tq-G7T"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4G7-XO-0DP">
+                                <items>
+                                    <navigationItem title="Location" id="pJ6-ak-keY">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NND-LN-lUw">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="jBy-eZ-Jpl" id="K1O-KE-7iW"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="qxQ-Hf-IO3">
+                                            <connections>
+                                                <action selector="doneTapped:" destination="jBy-eZ-Jpl" id="K2x-xd-UnB"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4G7-XO-0DP" firstAttribute="top" secondItem="jwx-q5-uvg" secondAttribute="top" type="default" id="CfO-1Q-AGl"/>
+                            <constraint firstItem="Nhr-fQ-6no" firstAttribute="top" secondItem="4G7-XO-0DP" secondAttribute="bottom" type="default" id="Doh-uc-agz"/>
+                            <constraint firstItem="4G7-XO-0DP" firstAttribute="leading" secondItem="jwx-q5-uvg" secondAttribute="leading" type="default" id="EWY-HO-sM3"/>
+                            <constraint firstItem="Nhr-fQ-6no" firstAttribute="trailing" secondItem="jwx-q5-uvg" secondAttribute="trailing" type="default" id="MLC-fD-AK9"/>
+                            <constraint firstItem="Nhr-fQ-6no" firstAttribute="leading" secondItem="jwx-q5-uvg" secondAttribute="leading" type="default" id="g9H-iK-Izq"/>
+                            <constraint firstItem="4G7-XO-0DP" firstAttribute="trailing" secondItem="jwx-q5-uvg" secondAttribute="trailing" type="default" id="iZQ-bB-y3H"/>
+                            <constraint firstItem="Nhr-fQ-6no" firstAttribute="bottom" secondItem="jwx-q5-uvg" secondAttribute="bottom" type="default" id="nge-7h-a9p"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zL7-Uf-0rp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1408" y="620"/>
+        </scene>
     </scenes>
+    <classes>
+        <class className="CourseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pageChanged:"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="LocationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelTapped:"/>
+                <relationship kind="action" name="doneTapped:"/>
+            </relationships>
+        </class>
+        <class className="LunchDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LunchDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="swipeLeft:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="swipeRight:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="categoryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="propertiesLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LunchMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LunchMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="swipeLeft:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="swipeRight:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="settingsButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="todayButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

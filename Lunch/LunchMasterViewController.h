@@ -15,4 +15,7 @@
 @property (strong, nonatomic) LunchDataController *dataController;
 - (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender;
 - (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *todayButton;
+
 @end

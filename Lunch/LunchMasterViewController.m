@@ -27,8 +27,8 @@
     
     self.dataController = [LunchDataController sharedController];
 
-    self.navigationItem.rightBarButtonItem.target = self;
-    self.navigationItem.rightBarButtonItem.action = @selector(goToday:);
+    self.todayButton.target = self;
+    self.todayButton.action = @selector(goToday:);
     
     [self retrieveLunch:dateShown];
 }
@@ -48,13 +48,13 @@
     NSDateComponents *componentsDate = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:dateShown];
     NSDateComponents *componentsToday = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
     
-    self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.todayButton.enabled = YES;
     
     if (componentsDate.year == componentsToday.year &&
         componentsDate.month == componentsToday.month) {
         if (componentsDate.day == componentsToday.day) {
             self.title = @"Today";
-            self.navigationItem.rightBarButtonItem.enabled = NO;
+            self.todayButton.enabled = NO;
         }
         else if (componentsDate.day + 1 == componentsToday.day) {
             self.title = @"Yesterday";
