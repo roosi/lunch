@@ -18,17 +18,6 @@
 
 @implementation CourseViewController
 
-- (void)setCourse:(id)newCourse
-{
-    NSLog(@"setCourse");
-    if (_course != newCourse) {
-        _course = newCourse;
-        
-        // Update the view.
-        //[self configureView];
-    }
-}
-
 -(void) setIndex:(NSUInteger)index
 {
     NSLog(@"setIndex %d", index);
@@ -48,20 +37,12 @@
     }
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self configureView];
     // Do any additional setup after loading the view.
+    
+    self.dataController = [LunchDataController sharedController];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

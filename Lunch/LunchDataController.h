@@ -13,6 +13,8 @@
 @interface LunchDataController : NSObject
 @property (nonatomic, copy) NSMutableArray *courses;
 
++(LunchDataController *) sharedController;
+
 -(NSUInteger) countOfCourses;
 -(Course *) objectInCoursesAtIndex:(NSUInteger)index;
 -(void) retrieveLunchWithDate:(NSDate*)date completion: (void(^)())callback;

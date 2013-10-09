@@ -13,6 +13,17 @@
 @end
 
 @implementation LunchDataController
+
+static LunchDataController* instance;
+
++(LunchDataController *) sharedController
+{
+    if (instance == nil) {
+        instance = [[LunchDataController alloc] init];
+    }
+    return instance;
+}
+
 -(id)init {
     if (self = [super init]) {
         self.courses = [[NSMutableArray alloc] init];

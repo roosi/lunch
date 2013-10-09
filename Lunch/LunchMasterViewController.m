@@ -25,7 +25,7 @@
     [super awakeFromNib];
     dateShown = [NSDate date];
     
-    self.dataController = [[LunchDataController alloc] init];
+    self.dataController = [LunchDataController sharedController];
 
     self.navigationItem.rightBarButtonItem.target = self;
     self.navigationItem.rightBarButtonItem.action = @selector(goToday:);
@@ -158,11 +158,8 @@
     if ([[segue identifier] isEqualToString:@"ShowCourse"]) {
         NSLog(@"ShowCourse");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        //Course *course = [self.dataController objectInCoursesAtIndex:indexPath.row];
         
-        [[segue destinationViewController] setDataController:self.dataController];
         [[segue destinationViewController] setIndex:indexPath.row];
-        //[[segue destinationViewController] setCourse:course];
     }
 }
 
