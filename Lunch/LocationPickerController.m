@@ -21,7 +21,7 @@
     [super viewDidLoad];
 
     self.dataController = [RestaurantDataController sharedController];
-    self.selectedIndex = 0;
+    self.selectedIndex = [[RestaurantDataController sharedController] selectedRestaurant];
 }
 
 - (void)didReceiveMemoryWarning

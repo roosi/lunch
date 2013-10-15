@@ -8,6 +8,7 @@
 
 #import "LunchDataController.h"
 #import "Course.h"
+#import "Restaurant.h"
 
 @interface LunchDataController ()
 @end
@@ -97,7 +98,43 @@ static LunchDataController* instance;
         
     }
      */
+}
+
+-(void) retrieveLunchWithDate:(NSDate *)date restaurant:(Restaurant *)restaurant completion:(void (^)())callback
+{
+    //http://www.sodexo.fi/ruokalistat/output/daily_json/444/2013/10/2/fi
     
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.sodexo.fi/ruokalistat/output/daily_json/%iu/%ld/%ld/%ld/fi", restaurant.id, (long)components.year,(long)components.month,(long)components.day];
+    
+    NSLog(@"%@", urlString);
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * response, NSData *data, NSError *error) {
+        
+        if(!error) {
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
+                                                                     options:kNilOptions
+                                                                       error:&error];
+            NSLog(@"JSON: %@", jsonDict);
+            NSArray *courses = [jsonDict objectForKey:@"courses"];
+            
+            [self.courses removeAllObjects];
+            for(id object in courses) {
+                Course *course = [[Course alloc] initWithJson:object];
+                [self.courses addObject:course];
+            }
+            
+            if (callback) {
+                callback();
+            }
+        }
+        else {
+            NSLog(@"\nJSON: %@ \n Error: %@", data, error);
+        }
+        
+    }];
 }
 
 -(void)setCourses:(NSMutableArray *)courses {

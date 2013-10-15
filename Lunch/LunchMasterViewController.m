@@ -11,6 +11,7 @@
 #import "LunchDetailViewController.h"
 
 #import "LunchDataController.h"
+#import "RestaurantDataController.h"
 #import "Course.h"
 
 @interface LunchMasterViewController () {
@@ -30,7 +31,7 @@
     self.todayButton.target = self;
     self.todayButton.action = @selector(goToday:);
     
-    [self retrieveLunch:dateShown];
+    //[self retrieveLunch:dateShown];
 }
 
 - (void)goToday:(id)sender
@@ -44,6 +45,10 @@
     [self.activityIndicator startAnimating];
 
     dateShown = date;
+    
+    RestaurantDataController *dataController = [RestaurantDataController sharedController];
+    NSUInteger index = [dataController selectedRestaurant];
+    Restaurant *restaurant = [dataController objectInRestaurantsAtIndex:index];
     
     NSDateComponents *componentsDate = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:dateShown];
     NSDateComponents *componentsToday = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
@@ -73,7 +78,7 @@
         self.title = dateShown.description;
     }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-        [self.dataController retrieveLunchWithDate:dateShown completion: ^{
+        [self.dataController retrieveLunchWithDate:dateShown restaurant: restaurant completion: ^{
             NSLog(@"Completed");
             [self lunchRetrived];
         }];
@@ -102,6 +107,13 @@
     [activityIndicator startAnimating];
      */
 
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self retrieveLunch:dateShown];
 }
    
 - (void)didReceiveMemoryWarning

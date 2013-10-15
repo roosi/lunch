@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Course;
+@class Restaurant;
 
 @interface LunchDataController : NSObject
 @property (nonatomic, copy) NSMutableArray *courses;
@@ -18,4 +19,5 @@
 -(NSUInteger) countOfCourses;
 -(Course *) objectInCoursesAtIndex:(NSUInteger)index;
 -(void) retrieveLunchWithDate:(NSDate*)date completion: (void(^)())callback;
+-(void) retrieveLunchWithDate:(NSDate*)date restaurant:(Restaurant *)restaurant  completion: (void(^)())callback;
 @end
