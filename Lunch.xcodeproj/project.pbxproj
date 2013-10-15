@@ -32,9 +32,10 @@
 		5FCAEA7E1803022D003944C6 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEA7D1803022D003944C6 /* CourseViewController.m */; };
 		5FCAEBD918044BDF003944C6 /* CoursePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAEBD818044BDF003944C6 /* CoursePage.xib */; };
 		5FCAEBDC18044E5B003944C6 /* CoursePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEBDB18044E5B003944C6 /* CoursePage.m */; };
-		5FCAEC421805A8DA003944C6 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEC411805A8DA003944C6 /* LocationViewController.m */; };
+		5FCAEC421805A8DA003944C6 /* LocationPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEC411805A8DA003944C6 /* LocationPickerController.m */; };
 		5FCAEC451805BD54003944C6 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEC441805BD54003944C6 /* Restaurant.m */; };
 		5FCAEC481805BFBC003944C6 /* RestaurantDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEC471805BFBB003944C6 /* RestaurantDataController.m */; };
+		5FCAEE6C180C51ED003944C6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEE6B180C51ED003944C6 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,12 +74,14 @@
 		5FCAEBD818044BDF003944C6 /* CoursePage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoursePage.xib; sourceTree = "<group>"; };
 		5FCAEBDA18044E5B003944C6 /* CoursePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoursePage.h; sourceTree = "<group>"; };
 		5FCAEBDB18044E5B003944C6 /* CoursePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoursePage.m; sourceTree = "<group>"; };
-		5FCAEC401805A8DA003944C6 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
-		5FCAEC411805A8DA003944C6 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		5FCAEC401805A8DA003944C6 /* LocationPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerController.h; sourceTree = "<group>"; };
+		5FCAEC411805A8DA003944C6 /* LocationPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerController.m; sourceTree = "<group>"; };
 		5FCAEC431805BD54003944C6 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		5FCAEC441805BD54003944C6 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 		5FCAEC461805BFBB003944C6 /* RestaurantDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDataController.h; sourceTree = "<group>"; };
 		5FCAEC471805BFBB003944C6 /* RestaurantDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDataController.m; sourceTree = "<group>"; };
+		5FCAEE6A180C51ED003944C6 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5FCAEE6B180C51ED003944C6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +131,10 @@
 				5F21F77317FC2CC700DA3D16 /* LunchAppDelegate.h */,
 				5F21F77417FC2CC700DA3D16 /* LunchAppDelegate.m */,
 				5F21F77C17FC2CC700DA3D16 /* MainStoryboard.storyboard */,
-				5FCAEC401805A8DA003944C6 /* LocationViewController.h */,
-				5FCAEC411805A8DA003944C6 /* LocationViewController.m */,
+				5FCAEE6A180C51ED003944C6 /* SettingsViewController.h */,
+				5FCAEE6B180C51ED003944C6 /* SettingsViewController.m */,
+				5FCAEC401805A8DA003944C6 /* LocationPickerController.h */,
+				5FCAEC411805A8DA003944C6 /* LocationPickerController.m */,
 				5FCAEC431805BD54003944C6 /* Restaurant.h */,
 				5FCAEC441805BD54003944C6 /* Restaurant.m */,
 				5FCAEBD818044BDF003944C6 /* CoursePage.xib */,
@@ -258,9 +263,10 @@
 				5F21F78F17FC733000DA3D16 /* LunchDataController.m in Sources */,
 				5FCAEA7E1803022D003944C6 /* CourseViewController.m in Sources */,
 				5FCAEBDC18044E5B003944C6 /* CoursePage.m in Sources */,
-				5FCAEC421805A8DA003944C6 /* LocationViewController.m in Sources */,
+				5FCAEC421805A8DA003944C6 /* LocationPickerController.m in Sources */,
 				5FCAEC451805BD54003944C6 /* Restaurant.m in Sources */,
 				5FCAEC481805BFBC003944C6 /* RestaurantDataController.m in Sources */,
+				5FCAEE6C180C51ED003944C6 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

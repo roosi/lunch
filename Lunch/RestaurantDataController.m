@@ -65,4 +65,17 @@ static RestaurantDataController *instance;
     return [self.restaurants objectAtIndex:index];
 }
 
+-(NSUInteger) selectedRestaurant {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUInteger index = [defaults integerForKey:@"SelectedRestaurant"];
+    return index;
+}
+
+-(void) setSelectedRestaurant:(NSUInteger)selectedRestaurant {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:selectedRestaurant forKey:@"SelectedRestaurant"];
+    [defaults synchronize];
+}
+
+
 @end

@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Jouni Nurmi. All rights reserved.
 //
 
-#import "LocationViewController.h"
+#import "LocationPickerController.h"
 #import "Restaurant.h"
 #import "RestaurantDataController.h"
 
-@interface LocationViewController ()
+@interface LocationPickerController ()
 
 @end
 
-@implementation LocationViewController
+@implementation LocationPickerController
 
 - (void)viewDidLoad
 {
@@ -91,11 +91,13 @@
 
 - (IBAction)cancelTapped:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate locationPickerControllerDidCancel:self];
 }
 
 - (IBAction)doneTapped:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.dataController setSelectedRestaurant:self.selectedIndex];
+    Restaurant * restaurant = [self.dataController objectInRestaurantsAtIndex:self.selectedIndex];
+    [self.delegate locationPickerController:self didFinishPickingLocation:restaurant];
 }
 @end

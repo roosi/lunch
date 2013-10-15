@@ -12,6 +12,7 @@
 
 @interface RestaurantDataController : NSObject
 @property (nonatomic, copy) NSMutableArray *restaurants;
+@property (nonatomic) NSUInteger selectedRestaurant;
 
 +(RestaurantDataController *) sharedController;
 
