@@ -36,6 +36,10 @@
 
     NSUInteger index = [[RestaurantDataController sharedController] selectedRestaurant];
     self.locationLabel.text = [[RestaurantDataController sharedController] objectInRestaurantsAtIndex:index].name;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL nearbyReminder = [defaults boolForKey:@"NearbyReminderSwitch"];
+    self.nearbyReminderSwitch.on = nearbyReminder;
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,4 +87,11 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+- (IBAction)nearbyReminderChanged:(id)sender {
+    UISwitch *nearbyReminder = sender;
+    NSLog(@"nearbyReminderChanged %i", nearbyReminder.on);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:nearbyReminder.on forKey:@"NearbyReminderSwitch"];
+    [defaults synchronize];
+}
 @end
