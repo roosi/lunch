@@ -12,7 +12,7 @@
 #import "Restaurant.h"
 
 @interface SettingsViewController ()
-
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @end
 
 @implementation SettingsViewController
@@ -29,6 +29,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager setDelegate:self];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
 
     NSUInteger index = [[RestaurantDataController sharedController] selectedRestaurant];
     self.locationLabel.text = [[RestaurantDataController sharedController] objectInRestaurantsAtIndex:index].name;
@@ -48,15 +52,35 @@
     }
 }
 
--(void)locationPickerController:(LocationPickerController *)picker didFinishPickingLocation:(Restaurant *)location
+-(void)locationPickerController:(LocationPickerController *)picker didFinishPickingLocation:(Restaurant *)restaurant
 {
-    self.locationLabel.text = location.name;
+    /*
+    CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:restaurant.coordinate radius:500.0 identifier: [NSString stringWithFormat:@"%i", restaurant.id]];
+    
+    for (CLRegion * monitored in [self.locationManager monitoredRegions])
+    {
+        [self.locationManager stopMonitoringForRegion:monitored];
+    }
+    [self.locationManager startMonitoringForRegion:region];
+     */
+
+    self.locationLabel.text = restaurant.name;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)locationPickerControllerDidCancel:(LocationPickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 @end

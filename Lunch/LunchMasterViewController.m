@@ -77,6 +77,10 @@
     else {
         self.title = dateShown.description;
     }
+    
+    [self.dataController.courses removeAllObjects];
+    [self.tableView reloadData];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
         [self.dataController retrieveLunchWithDate:dateShown restaurant: restaurant completion: ^{
             NSLog(@"Completed");
@@ -87,6 +91,16 @@
 
 - (void)lunchRetrived
 {
+    if ([self.dataController countOfCourses] == 0) {
+        UILabel *emptyView = [[UILabel alloc] initWithFrame:self.tableView.frame];
+        emptyView.textAlignment = NSTextAlignmentCenter;
+        emptyView.text = @"No lunch";
+        self.tableView.backgroundView = emptyView;
+    }
+    else {
+        self.tableView.backgroundView = nil;
+    }
+    
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [self.activityIndicator performSelectorOnMainThread:@selector(stopAnimating) withObject:nil waitUntilDone:NO];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -133,6 +147,7 @@
 {
     NSUInteger count = [self.dataController countOfCourses];
     NSLog(@"numberOfRowsInSection %ld", (long)count);
+    
     return count;
 }
 
@@ -141,8 +156,22 @@
     NSLog(@"cellForRowAtIndexPath %ld", (long)indexPath.row);
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
+    NSLocale *locale = [NSLocale currentLocale];
     Course *course = [self.dataController objectInCoursesAtIndex:indexPath.row];
-    cell.textLabel.text = course.titleEn;
+    
+    NSString *title = course.titleFi;
+    if ([locale.localeIdentifier isEqual:@"fi_FI"]) {
+         title = course.titleFi;
+    }
+    else if ([locale.localeIdentifier isEqual:@"en_US"]) {
+        title = course.titleEn;
+    }
+    
+    if (title == nil) {
+         title = course.titleFi;        
+    }
+    cell.textLabel.text = title;
+    
     if ([course.category isEqual:@"Scandinavian"]) {
         cell.imageView.image = [UIImage imageNamed:@"114.png"];
     }

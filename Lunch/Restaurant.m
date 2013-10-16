@@ -20,4 +20,14 @@
     }
     return nil;
 }
+
+-(id) initWithId:(int)id name:(NSString *)name location:(CLLocationCoordinate2D)coordinate
+{
+    self = [self initWithId:id name:name];
+    if (self) {
+        _coordinate = coordinate;
+        return self;
+    }
+    return nil;
+}
 @end

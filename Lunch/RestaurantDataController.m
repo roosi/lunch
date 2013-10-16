@@ -8,6 +8,7 @@
 
 #import "RestaurantDataController.h"
 #import "Restaurant.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation RestaurantDataController
 
@@ -27,10 +28,10 @@ static RestaurantDataController *instance;
     if (self = [super init])
     {
         self.restaurants = [[NSMutableArray alloc] init];
-        
-        [self.restaurants addObject:[[Restaurant alloc] initWithId:429 name:@"Jyväskylän poliisi- ja oikeustalo"]];
-        [self.restaurants addObject:[[Restaurant alloc] initWithId:444 name:@"Mattilanniemi, Jyväskylä"]];
-        [self.restaurants addObject:[[Restaurant alloc] initWithId:485 name:@"Tietotalo, Jyväskylä"]];
+
+        [self.restaurants addObject:[[Restaurant alloc] initWithId:429 name:@"Jyväskylän poliisi- ja oikeustalo" location:CLLocationCoordinate2DMake(62.242598, 25.752531)]];
+        [self.restaurants addObject:[[Restaurant alloc] initWithId:444 name:@"Mattilanniemi, Jyväskylä" location:CLLocationCoordinate2DMake(62.233205, 25.738800)]];
+        [self.restaurants addObject:[[Restaurant alloc] initWithId:485 name:@"Tietotalo, Jyväskylä" location:CLLocationCoordinate2DMake(62.239606, 25.749208)]];
         
         return self;
     }

@@ -37,7 +37,20 @@
     if (_course != course) {
         _course = course;
     }
-    self.nameLabel.text = _course.titleEn;
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *title = self.course.titleFi;
+    if ([locale.localeIdentifier isEqual:@"fi_FI"]) {
+        title = self.course.titleFi;
+    }
+    else if ([locale.localeIdentifier isEqual:@"en_US"]) {
+        title = self.course.titleEn;
+    }
+    
+    if (title == nil) {
+        title = self.course.titleFi;
+    }
+    self.nameLabel.text = title;
+    
     self.priceLabel.text = _course.price;
     self.propertiesLabel.text = _course.properties;
     if ([course.category isEqual:@"Scandinavian"]) {
