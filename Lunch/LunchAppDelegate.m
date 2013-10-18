@@ -7,13 +7,49 @@
 //
 
 #import "LunchAppDelegate.h"
+#import "RestaurantNearbyManager.h"
 
+@interface LunchAppDelegate ()
+{
+    BOOL isAppResumingFromBackground;
+}
+
+@end
 @implementation LunchAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    NSLog(@"didFinishLaunchingWithOptions %@", launchOptions.description);
+    
+    UILocalNotification *notification = [launchOptions objectForKey:(UIApplicationLaunchOptionsLocalNotificationKey)];
+    if (notification) {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:notification.alertBody message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        application.applicationIconBadgeNumber = 0;
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey:@"NearbyReminderSwitch"]) {
+        [[RestaurantNearbyManager sharedManager] startMonitoring];
+    }
+    
     return YES;
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"didReceiveLocalNotification %@", notification.alertBody);
+    UIApplicationState state = [application applicationState];
+    NSLog(@"didReceiveLocalNotification %i", state);
+    if (isAppResumingFromBackground || state == UIApplicationStateActive) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:notification.alertBody message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    // Set icon badge number to zero
+    application.applicationIconBadgeNumber = 0;
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -31,6 +67,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    isAppResumingFromBackground = YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

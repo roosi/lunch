@@ -10,9 +10,10 @@
 #import "LocationPickerController.h"
 #import "RestaurantDataController.h"
 #import "Restaurant.h"
+#import "RestaurantNearbyManager.h"
 
 @interface SettingsViewController ()
-@property (strong, nonatomic) CLLocationManager *locationManager;
+
 @end
 
 @implementation SettingsViewController
@@ -29,10 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.locationManager = [[CLLocationManager alloc] init];
-    [self.locationManager setDelegate:self];
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
 
     NSUInteger index = [[RestaurantDataController sharedController] selectedRestaurant];
     self.locationLabel.text = [[RestaurantDataController sharedController] objectInRestaurantsAtIndex:index].name;
@@ -79,18 +76,30 @@
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, region.description);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, region.description);
 }
 
 - (IBAction)nearbyReminderChanged:(id)sender {
     UISwitch *nearbyReminder = sender;
     NSLog(@"nearbyReminderChanged %i", nearbyReminder.on);
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL currentValue = [defaults boolForKey:@"NearbyReminderSwitch"];
+
+    if (currentValue != nearbyReminder.on || [defaults objectForKey:@"NearbyReminderSwitch"] == nil) {
+        if (nearbyReminder.on) {
+            [[RestaurantNearbyManager sharedManager] startMonitoring];
+        }
+        else {
+            [[RestaurantNearbyManager sharedManager] stopMonitoring];
+        }
+    }
+
     [defaults setBool:nearbyReminder.on forKey:@"NearbyReminderSwitch"];
     [defaults synchronize];
 }

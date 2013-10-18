@@ -32,7 +32,7 @@ static RestaurantDataController *instance;
         [self.restaurants addObject:[[Restaurant alloc] initWithId:429 name:@"Jyväskylän poliisi- ja oikeustalo" location:CLLocationCoordinate2DMake(62.242598, 25.752531)]];
         [self.restaurants addObject:[[Restaurant alloc] initWithId:444 name:@"Mattilanniemi, Jyväskylä" location:CLLocationCoordinate2DMake(62.233205, 25.738800)]];
         [self.restaurants addObject:[[Restaurant alloc] initWithId:485 name:@"Tietotalo, Jyväskylä" location:CLLocationCoordinate2DMake(62.239606, 25.749208)]];
-        
+        [self.restaurants addObject:[[Restaurant alloc] initWithId:132954 name:@"Ravintola Kasper, Espoo" location:CLLocationCoordinate2DMake(60.181927, 24.824444)]];       
         return self;
     }
     return nil;
@@ -64,6 +64,17 @@ static RestaurantDataController *instance;
 -(Restaurant *) objectInRestaurantsAtIndex:(NSUInteger)index
 {
     return [self.restaurants objectAtIndex:index];
+}
+
+-(Restaurant *) objectInRestaurantsWithId:(NSUInteger)id
+{
+    for (Restaurant *restaurant in self.restaurants)
+    {
+        if (restaurant.id == id) {
+            return restaurant;
+        }
+    }
+    return nil;
 }
 
 -(NSUInteger) selectedRestaurant {

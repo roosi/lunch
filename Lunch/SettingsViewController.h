@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LocationPickerController.h"
-#import <CoreLocation/CoreLocation.h>
 
-@interface SettingsViewController : UITableViewController <LocationPickerControllerDelegate, CLLocationManagerDelegate>
+@interface SettingsViewController : UITableViewController <LocationPickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 - (IBAction)nearbyReminderChanged:(id)sender;
 @property (weak, nonatomic) IBOutlet UISwitch *nearbyReminderSwitch;

@@ -51,7 +51,7 @@ static LunchDataController* instance;
             NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
                                                                  options:kNilOptions
                                                                    error:&error];
-            NSLog(@"JSON: %@", jsonDict);
+            //NSLog(@"JSON: %@", jsonDict);
             NSArray *courses = [jsonDict objectForKey:@"courses"];
         
             [self.courses removeAllObjects];
@@ -117,7 +117,7 @@ static LunchDataController* instance;
             NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
                                                                      options:kNilOptions
                                                                        error:&error];
-            NSLog(@"JSON: %@", jsonDict);
+            //NSLog(@"JSON: %@", jsonDict);
             NSArray *courses = [jsonDict objectForKey:@"courses"];
             
             [self.courses removeAllObjects];
