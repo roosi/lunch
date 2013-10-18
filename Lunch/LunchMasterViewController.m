@@ -12,6 +12,7 @@
 
 #import "LunchDataController.h"
 #import "RestaurantDataController.h"
+#import "Restaurant.h"
 #import "Course.h"
 
 @interface LunchMasterViewController () {
@@ -49,6 +50,7 @@
     RestaurantDataController *dataController = [RestaurantDataController sharedController];
     NSUInteger index = [dataController selectedRestaurant];
     Restaurant *restaurant = [dataController objectInRestaurantsAtIndex:index];
+    self.restaurantLabel.text = restaurant.name;
     
     NSDateComponents *componentsDate = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:dateShown];
     NSDateComponents *componentsToday = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];

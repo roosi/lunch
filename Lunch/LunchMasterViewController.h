@@ -17,5 +17,6 @@
 - (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *todayButton;
+@property (weak, nonatomic) IBOutlet UILabel *restaurantLabel;
 
 @end
