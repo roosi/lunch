@@ -11,6 +11,7 @@
 #import "RestaurantDataController.h"
 #import "Restaurant.h"
 #import "RestaurantNearbyManager.h"
+#import "Settings.h"
 
 @interface SettingsViewController ()
 
@@ -89,9 +90,9 @@
     NSLog(@"nearbyReminderChanged %i", nearbyReminder.on);
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL currentValue = [defaults boolForKey:@"NearbyReminderSwitch"];
+    BOOL currentValue = [defaults boolForKey:NearbyReminderSwitch];
 
-    if (currentValue != nearbyReminder.on || [defaults objectForKey:@"NearbyReminderSwitch"] == nil) {
+    if (currentValue != nearbyReminder.on || [defaults objectForKey:NearbyReminderSwitch] == nil) {
         if (nearbyReminder.on) {
             [[RestaurantNearbyManager sharedManager] startMonitoring];
         }
@@ -100,7 +101,7 @@
         }
     }
 
-    [defaults setBool:nearbyReminder.on forKey:@"NearbyReminderSwitch"];
+    [defaults setBool:nearbyReminder.on forKey:NearbyReminderSwitch];
     [defaults synchronize];
 }
 @end

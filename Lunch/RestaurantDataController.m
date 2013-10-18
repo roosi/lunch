@@ -9,6 +9,7 @@
 #import "RestaurantDataController.h"
 #import "Restaurant.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Settings.h"
 
 @implementation RestaurantDataController
 
@@ -79,13 +80,13 @@ static RestaurantDataController *instance;
 
 -(NSUInteger) selectedRestaurant {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUInteger index = [defaults integerForKey:@"SelectedRestaurant"];
+    NSUInteger index = [defaults integerForKey:SelectedRestaurant];
     return index;
 }
 
 -(void) setSelectedRestaurant:(NSUInteger)selectedRestaurant {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:selectedRestaurant forKey:@"SelectedRestaurant"];
+    [defaults setInteger:selectedRestaurant forKey:SelectedRestaurant];
     [defaults synchronize];
 }
 

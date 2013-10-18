@@ -8,6 +8,7 @@
 
 #import "LunchAppDelegate.h"
 #import "RestaurantNearbyManager.h"
+#import "Settings.h"
 
 @interface LunchAppDelegate ()
 {
@@ -30,10 +31,10 @@
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults boolForKey:@"NearbyReminderSwitch"]) {
+    if ([defaults boolForKey:NearbyReminderSwitch]) {
         [[RestaurantNearbyManager sharedManager] startMonitoring];
     }
-    
+
     return YES;
 }
 
@@ -41,10 +42,19 @@
 {
     NSLog(@"didReceiveLocalNotification %@", notification.alertBody);
     UIApplicationState state = [application applicationState];
-    NSLog(@"didReceiveLocalNotification %i", state);
-    if (isAppResumingFromBackground || state == UIApplicationStateActive) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:notification.alertBody message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+    NSLog(@"didReceiveLocalNotification %i %i", state, isAppResumingFromBackground);
+    
+    if (state == UIApplicationStateActive || isAppResumingFromBackground) {
+        UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+        if (isAppResumingFromBackground) {
+            [tabBarController setSelectedIndex:1];
+        }
+        else {
+            UITabBarItem *tabBarItem = [[tabBarController.viewControllers objectAtIndex:1] tabBarItem];
+            int current = tabBarItem.badgeValue.intValue;
+            current += 1;
+            tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", current];
+        }
     }
     
     // Set icon badge number to zero

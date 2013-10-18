@@ -67,7 +67,10 @@ static RestaurantNearbyManager* instance;
     localNotification.alertAction = @"Show";
     localNotification.hasAction = YES;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
+    int current = [[UIApplication sharedApplication] applicationIconBadgeNumber];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: current + 1];
+                   
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 

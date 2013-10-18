@@ -30,6 +30,7 @@
 		5F90ACB817FF3808009DB074 /* SplashScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB717FF3808009DB074 /* SplashScreen@2x.png */; };
 		5F90ACBA17FF3820009DB074 /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB917FF3820009DB074 /* SplashScreen.png */; };
 		5FA647E518110B4A007772CD /* RestaurantNearbyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA647E418110B4A007772CD /* RestaurantNearbyManager.m */; };
+		5FA647E91811430B007772CD /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA647E81811430A007772CD /* NearbyViewController.m */; };
 		5FCAEA7E1803022D003944C6 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEA7D1803022D003944C6 /* CourseViewController.m */; };
 		5FCAEBD918044BDF003944C6 /* CoursePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAEBD818044BDF003944C6 /* CoursePage.xib */; };
 		5FCAEBDC18044E5B003944C6 /* CoursePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAEBDB18044E5B003944C6 /* CoursePage.m */; };
@@ -74,6 +75,9 @@
 		5F90ACB917FF3820009DB074 /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
 		5FA647E318110B4A007772CD /* RestaurantNearbyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantNearbyManager.h; sourceTree = "<group>"; };
 		5FA647E418110B4A007772CD /* RestaurantNearbyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantNearbyManager.m; sourceTree = "<group>"; };
+		5FA647E61811374D007772CD /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		5FA647E71811430A007772CD /* NearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyViewController.h; sourceTree = "<group>"; };
+		5FA647E81811430A007772CD /* NearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyViewController.m; sourceTree = "<group>"; };
 		5FCAEA7C1803022D003944C6 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		5FCAEA7D1803022D003944C6 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		5FCAEBD818044BDF003944C6 /* CoursePage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoursePage.xib; sourceTree = "<group>"; };
@@ -154,6 +158,9 @@
 				5FCAEBDB18044E5B003944C6 /* CoursePage.m */,
 				5F21F77F17FC2CC700DA3D16 /* LunchMasterViewController.h */,
 				5F21F78017FC2CC700DA3D16 /* LunchMasterViewController.m */,
+				5FA647E71811430A007772CD /* NearbyViewController.h */,
+				5FA647E81811430A007772CD /* NearbyViewController.m */,
+				5FA647E61811374D007772CD /* Settings.h */,
 				5F21F78217FC2CC700DA3D16 /* LunchDetailViewController.h */,
 				5F21F78317FC2CC700DA3D16 /* LunchDetailViewController.m */,
 				5FCAEA7C1803022D003944C6 /* CourseViewController.h */,
@@ -281,6 +288,7 @@
 				5FCAEC481805BFBC003944C6 /* RestaurantDataController.m in Sources */,
 				5FCAEE6C180C51ED003944C6 /* SettingsViewController.m in Sources */,
 				5FA647E518110B4A007772CD /* RestaurantNearbyManager.m in Sources */,
+				5FA647E91811430B007772CD /* NearbyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
