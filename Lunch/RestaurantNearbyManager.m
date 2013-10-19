@@ -64,9 +64,10 @@ static RestaurantNearbyManager* instance;
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = [NSDate date];
     localNotification.alertBody = [NSString stringWithFormat:@"%@ is nearby.", restaurant.name];
-    localNotification.alertAction = @"Show";
+    localNotification.alertAction = nil;
     localNotification.hasAction = YES;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:restaurant.name, @"Restaurant", nil];
     
     int current = [[UIApplication sharedApplication] applicationIconBadgeNumber];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: current + 1];
@@ -78,6 +79,19 @@ static RestaurantNearbyManager* instance;
 {
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
     NSLog(@"%s %@", __PRETTY_FUNCTION__, restaurant.name);
+    
+    int current = [[UIApplication sharedApplication] applicationIconBadgeNumber];
+    if (current > 0) {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber: current - 1];
+    }
+    
+    NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *notication in notifications) {
+        if ([[notication.userInfo valueForKey:@"Restaurant"] isEqual:restaurant.name]) {
+            [[UIApplication sharedApplication] cancelLocalNotification:notication];
+            break;
+        }
+    }
 }
 
 @end

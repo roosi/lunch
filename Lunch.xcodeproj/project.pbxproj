@@ -142,35 +142,14 @@
 		5F21F76A17FC2CC700DA3D16 /* Lunch */ = {
 			isa = PBXGroup;
 			children = (
+				5F8FC1CD18119797005E9CF5 /* Model */,
+				5F8FC1CE181197E1005E9CF5 /* View */,
+				5F8FC1CF181197EF005E9CF5 /* Controller */,
 				5F21F77317FC2CC700DA3D16 /* LunchAppDelegate.h */,
 				5F21F77417FC2CC700DA3D16 /* LunchAppDelegate.m */,
-				5F21F77C17FC2CC700DA3D16 /* MainStoryboard.storyboard */,
-				5FCAEE6A180C51ED003944C6 /* SettingsViewController.h */,
-				5FCAEE6B180C51ED003944C6 /* SettingsViewController.m */,
 				5FA647E318110B4A007772CD /* RestaurantNearbyManager.h */,
 				5FA647E418110B4A007772CD /* RestaurantNearbyManager.m */,
-				5FCAEC401805A8DA003944C6 /* LocationPickerController.h */,
-				5FCAEC411805A8DA003944C6 /* LocationPickerController.m */,
-				5FCAEC431805BD54003944C6 /* Restaurant.h */,
-				5FCAEC441805BD54003944C6 /* Restaurant.m */,
-				5FCAEBD818044BDF003944C6 /* CoursePage.xib */,
-				5FCAEBDA18044E5B003944C6 /* CoursePage.h */,
-				5FCAEBDB18044E5B003944C6 /* CoursePage.m */,
-				5F21F77F17FC2CC700DA3D16 /* LunchMasterViewController.h */,
-				5F21F78017FC2CC700DA3D16 /* LunchMasterViewController.m */,
-				5FA647E71811430A007772CD /* NearbyViewController.h */,
-				5FA647E81811430A007772CD /* NearbyViewController.m */,
 				5FA647E61811374D007772CD /* Settings.h */,
-				5F21F78217FC2CC700DA3D16 /* LunchDetailViewController.h */,
-				5F21F78317FC2CC700DA3D16 /* LunchDetailViewController.m */,
-				5FCAEA7C1803022D003944C6 /* CourseViewController.h */,
-				5FCAEA7D1803022D003944C6 /* CourseViewController.m */,
-				5F21F78A17FC6EE300DA3D16 /* Course.h */,
-				5F21F78B17FC6EE300DA3D16 /* Course.m */,
-				5FCAEC461805BFBB003944C6 /* RestaurantDataController.h */,
-				5FCAEC471805BFBB003944C6 /* RestaurantDataController.m */,
-				5F21F78D17FC733000DA3D16 /* LunchDataController.h */,
-				5F21F78E17FC733000DA3D16 /* LunchDataController.m */,
 				5F21F76B17FC2CC700DA3D16 /* Supporting Files */,
 			);
 			path = Lunch;
@@ -196,6 +175,51 @@
 				5F21F77A17FC2CC700DA3D16 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F8FC1CD18119797005E9CF5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5FCAEC431805BD54003944C6 /* Restaurant.h */,
+				5FCAEC441805BD54003944C6 /* Restaurant.m */,
+				5FCAEC461805BFBB003944C6 /* RestaurantDataController.h */,
+				5FCAEC471805BFBB003944C6 /* RestaurantDataController.m */,
+				5F21F78A17FC6EE300DA3D16 /* Course.h */,
+				5F21F78B17FC6EE300DA3D16 /* Course.m */,
+				5F21F78D17FC733000DA3D16 /* LunchDataController.h */,
+				5F21F78E17FC733000DA3D16 /* LunchDataController.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5F8FC1CE181197E1005E9CF5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5F21F77C17FC2CC700DA3D16 /* MainStoryboard.storyboard */,
+				5FCAEBD818044BDF003944C6 /* CoursePage.xib */,
+				5FCAEBDA18044E5B003944C6 /* CoursePage.h */,
+				5FCAEBDB18044E5B003944C6 /* CoursePage.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5F8FC1CF181197EF005E9CF5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5F21F77F17FC2CC700DA3D16 /* LunchMasterViewController.h */,
+				5F21F78017FC2CC700DA3D16 /* LunchMasterViewController.m */,
+				5F21F78217FC2CC700DA3D16 /* LunchDetailViewController.h */,
+				5F21F78317FC2CC700DA3D16 /* LunchDetailViewController.m */,
+				5FCAEA7C1803022D003944C6 /* CourseViewController.h */,
+				5FCAEA7D1803022D003944C6 /* CourseViewController.m */,
+				5FCAEE6A180C51ED003944C6 /* SettingsViewController.h */,
+				5FCAEE6B180C51ED003944C6 /* SettingsViewController.m */,
+				5FCAEC401805A8DA003944C6 /* LocationPickerController.h */,
+				5FCAEC411805A8DA003944C6 /* LocationPickerController.m */,
+				5FA647E71811430A007772CD /* NearbyViewController.h */,
+				5FA647E81811430A007772CD /* NearbyViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
