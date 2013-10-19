@@ -40,20 +40,14 @@
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    NSLog(@"didReceiveLocalNotification %@", notification.alertBody);
+    //NSLog(@"didReceiveLocalNotification %@", notification.alertBody);
     UIApplicationState state = [application applicationState];
-    NSLog(@"didReceiveLocalNotification %i %i", state, isAppResumingFromBackground);
+    //NSLog(@"didReceiveLocalNotification %i %i", state, isAppResumingFromBackground);
     
     if (state == UIApplicationStateActive || isAppResumingFromBackground) {
         UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
         if (isAppResumingFromBackground) {
             [tabBarController setSelectedIndex:1];
-        }
-        else {
-            UITabBarItem *tabBarItem = [[tabBarController.viewControllers objectAtIndex:1] tabBarItem];
-            int current = tabBarItem.badgeValue.intValue;
-            current += 1;
-            tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", current];
         }
     }
     

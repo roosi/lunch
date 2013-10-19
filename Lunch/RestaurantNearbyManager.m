@@ -16,6 +16,9 @@
 
 @implementation RestaurantNearbyManager
 
+NSString * const RestaurantMovingAwayNotification = @"RestaurantMovingAwayNotification";
+NSString * const RestaurantClosingNotification = @"RestaurantClosingNotification";
+
 static RestaurantNearbyManager* instance;
 
 + (RestaurantNearbyManager *) sharedManager
@@ -61,24 +64,31 @@ static RestaurantNearbyManager* instance;
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
     NSLog(@"%s %@", __PRETTY_FUNCTION__, restaurant.name);
 
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:restaurant.name, @"Restaurant", nil];
+    
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = [NSDate date];
     localNotification.alertBody = [NSString stringWithFormat:@"%@ is nearby.", restaurant.name];
     localNotification.alertAction = nil;
     localNotification.hasAction = YES;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:restaurant.name, @"Restaurant", nil];
+    localNotification.userInfo = userInfo;
     
     int current = [[UIApplication sharedApplication] applicationIconBadgeNumber];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: current + 1];
                    
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    NSLog(@"Send %@", RestaurantMovingAwayNotification);
+    [[NSNotificationCenter defaultCenter] postNotificationName:RestaurantClosingNotification object:self userInfo:userInfo];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
     NSLog(@"%s %@", __PRETTY_FUNCTION__, restaurant.name);
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:restaurant.name, @"Restaurant", nil];
     
     int current = [[UIApplication sharedApplication] applicationIconBadgeNumber];
     if (current > 0) {
@@ -92,6 +102,9 @@ static RestaurantNearbyManager* instance;
             break;
         }
     }
+    
+    NSLog(@"Send %@", RestaurantMovingAwayNotification);
+    [[NSNotificationCenter defaultCenter] postNotificationName:RestaurantMovingAwayNotification object:self userInfo:userInfo];
 }
 
 @end

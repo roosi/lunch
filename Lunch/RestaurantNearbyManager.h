@@ -10,6 +10,9 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface RestaurantNearbyManager : NSObject <CLLocationManagerDelegate>
+extern NSString * const RestaurantMovingAwayNotification;
+extern NSString * const RestaurantClosingNotification;
+
 + (RestaurantNearbyManager *) sharedManager;
 - (void) startMonitoring;
 - (void) stopMonitoring;

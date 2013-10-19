@@ -22,6 +22,7 @@
 		5F21F78417FC2CC700DA3D16 /* LunchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F21F78317FC2CC700DA3D16 /* LunchDetailViewController.m */; };
 		5F21F78C17FC6EE300DA3D16 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F21F78B17FC6EE300DA3D16 /* Course.m */; };
 		5F21F78F17FC733000DA3D16 /* LunchDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F21F78E17FC733000DA3D16 /* LunchDataController.m */; };
+		5F8FC1D21812D8F2005E9CF5 /* LunchTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8FC1D11812D8F2005E9CF5 /* LunchTabBarController.m */; };
 		5F90ACAE17FED574009DB074 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACAD17FED574009DB074 /* 58.png */; };
 		5F90ACB017FF04AB009DB074 /* 26.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACAF17FF04AB009DB074 /* 26.png */; };
 		5F90ACB217FF059C009DB074 /* 146.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB117FF059C009DB074 /* 146.png */; };
@@ -66,6 +67,8 @@
 		5F21F78B17FC6EE300DA3D16 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		5F21F78D17FC733000DA3D16 /* LunchDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunchDataController.h; sourceTree = "<group>"; };
 		5F21F78E17FC733000DA3D16 /* LunchDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchDataController.m; sourceTree = "<group>"; };
+		5F8FC1D01812D8F2005E9CF5 /* LunchTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunchTabBarController.h; sourceTree = "<group>"; };
+		5F8FC1D11812D8F2005E9CF5 /* LunchTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchTabBarController.m; sourceTree = "<group>"; };
 		5F90ACAD17FED574009DB074 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
 		5F90ACAF17FF04AB009DB074 /* 26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 26.png; sourceTree = "<group>"; };
 		5F90ACB117FF059C009DB074 /* 146.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 146.png; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 		5F8FC1CF181197EF005E9CF5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5F8FC1D01812D8F2005E9CF5 /* LunchTabBarController.h */,
+				5F8FC1D11812D8F2005E9CF5 /* LunchTabBarController.m */,
 				5F21F77F17FC2CC700DA3D16 /* LunchMasterViewController.h */,
 				5F21F78017FC2CC700DA3D16 /* LunchMasterViewController.m */,
 				5F21F78217FC2CC700DA3D16 /* LunchDetailViewController.h */,
@@ -313,6 +318,7 @@
 				5FCAEE6C180C51ED003944C6 /* SettingsViewController.m in Sources */,
 				5FA647E518110B4A007772CD /* RestaurantNearbyManager.m in Sources */,
 				5FA647E91811430B007772CD /* NearbyViewController.m in Sources */,
+				5F8FC1D21812D8F2005E9CF5 /* LunchTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

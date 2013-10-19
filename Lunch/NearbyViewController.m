@@ -7,6 +7,7 @@
 //
 
 #import "NearbyViewController.h"
+#import "RestaurantNearbyManager.h"
 
 @interface NearbyViewController ()
 
@@ -19,17 +20,31 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    NSLog(@"%s", __PRETTY_FUNCTION__);     
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restaurantMovingAway:) name:RestaurantMovingAwayNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restaurantClosing:) name:RestaurantClosingNotification object:nil];
+}
+
+
+- (void)restaurantMovingAway:(NSNotification *)notification {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)restaurantClosing:(NSNotification *)notification {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"%s", __PRETTY_FUNCTION__); 
     [super viewWillAppear:animated];
     
     self.tabBarController.selectedViewController.tabBarItem.badgeValue = nil;
