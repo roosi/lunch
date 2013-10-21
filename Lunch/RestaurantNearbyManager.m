@@ -33,6 +33,7 @@ static RestaurantNearbyManager* instance;
 {
     self = [super init];
     if (self) {
+        self.nearbyRestaurants = [[NSMutableArray alloc] init];
         self.locationManager = [[CLLocationManager alloc] init];
         [self.locationManager setDelegate:self];
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
@@ -63,6 +64,8 @@ static RestaurantNearbyManager* instance;
 {
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
     NSLog(@"%s %@", __PRETTY_FUNCTION__, restaurant.name);
+    
+    [self.nearbyRestaurants addObject:restaurant];
 
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:restaurant.name, @"Restaurant", nil];
     
@@ -88,6 +91,8 @@ static RestaurantNearbyManager* instance;
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
     NSLog(@"%s %@", __PRETTY_FUNCTION__, restaurant.name);
     
+    [self.nearbyRestaurants removeObject:restaurant];
+    
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:restaurant.name, @"Restaurant", nil];
     
     int current = [[UIApplication sharedApplication] applicationIconBadgeNumber];
@@ -107,4 +112,20 @@ static RestaurantNearbyManager* instance;
     [[NSNotificationCenter defaultCenter] postNotificationName:RestaurantMovingAwayNotification object:self userInfo:userInfo];
 }
 
+- (void) setNearbyRestaurants:(NSMutableArray *)nearbyRestaurants
+{
+    if (_nearbyRestaurants != nearbyRestaurants) {
+        _nearbyRestaurants = [nearbyRestaurants mutableCopy];
+    }
+}
+
+- (NSUInteger) countOfNearbyRestaurants
+{
+    return [self.nearbyRestaurants count];
+}
+
+- (Restaurant *) objectInNearbyRestaurantsAtIndex:(NSUInteger)index
+{
+    return [self.nearbyRestaurants objectAtIndex:index];
+}
 @end

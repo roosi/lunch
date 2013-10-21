@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class Restaurant;
+
 @interface RestaurantNearbyManager : NSObject <CLLocationManagerDelegate>
 extern NSString * const RestaurantMovingAwayNotification;
 extern NSString * const RestaurantClosingNotification;
+
+@property (nonatomic, copy) NSMutableArray *nearbyRestaurants;
+- (NSUInteger) countOfNearbyRestaurants;
+- (Restaurant *) objectInNearbyRestaurantsAtIndex:(NSUInteger)index;
 
 + (RestaurantNearbyManager *) sharedManager;
 - (void) startMonitoring;

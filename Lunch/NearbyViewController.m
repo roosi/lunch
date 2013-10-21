@@ -7,10 +7,11 @@
 //
 
 #import "NearbyViewController.h"
+#import "Restaurant.h"
 #import "RestaurantNearbyManager.h"
 
 @interface NearbyViewController ()
-
+@property (nonatomic, strong) RestaurantNearbyManager* nearbyManager;
 @end
 
 @implementation NearbyViewController
@@ -20,7 +21,6 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-
     }
     return self;
 }
@@ -29,6 +29,8 @@
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);     
     [super viewDidLoad];
+    self.nearbyManager = [RestaurantNearbyManager sharedManager];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restaurantMovingAway:) name:RestaurantMovingAwayNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restaurantClosing:) name:RestaurantClosingNotification object:nil];
 }
@@ -49,6 +51,8 @@
     
     self.tabBarController.selectedViewController.tabBarItem.badgeValue = nil;
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,17 +70,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return [self.nearbyManager countOfNearbyRestaurants];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    NSLog(@"%s", __PRETTY_FUNCTION__);  
+    static NSString *CellIdentifier = @"NearbyRestaurantCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    Restaurant *restaurant = [self.nearbyManager objectInNearbyRestaurantsAtIndex:indexPath.row];
+    
+    cell.textLabel.text = restaurant.name;
     
     return cell;
 }
