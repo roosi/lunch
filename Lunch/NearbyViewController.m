@@ -48,8 +48,11 @@
 {
     NSLog(@"%s", __PRETTY_FUNCTION__); 
     [super viewWillAppear:animated];
+
+    UIViewController *viewController = [self.tabBarController.viewControllers objectAtIndex:1];
+    viewController.tabBarItem.badgeValue = nil;
     
-    self.tabBarController.selectedViewController.tabBarItem.badgeValue = nil;
+    [self.tabBarItem setBadgeValue:nil];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     [self.tableView reloadData];

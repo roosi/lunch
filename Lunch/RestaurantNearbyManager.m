@@ -37,8 +37,28 @@ static RestaurantNearbyManager* instance;
         self.locationManager = [[CLLocationManager alloc] init];
         [self.locationManager setDelegate:self];
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+        [self.locationManager startUpdatingLocation];
     }
     return self;
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);    
+    CLLocation *location = [locations lastObject];
+    
+    [self.locationManager stopUpdatingLocation];
+    [self.nearbyRestaurants removeAllObjects];
+    
+    NSArray *restaurants = [[RestaurantDataController sharedController] restaurants];
+    for (Restaurant *restaurant in restaurants) {
+        CLLocation *restaurantLocation = [[CLLocation alloc] initWithLatitude:restaurant.coordinate.latitude longitude:restaurant.coordinate.longitude];
+        CLLocationDistance distance = [location distanceFromLocation:restaurantLocation];
+        if (distance < 500)
+        {
+            [self.nearbyRestaurants addObject:restaurant];
+        }
+    }
 }
 
 - (void) startMonitoring

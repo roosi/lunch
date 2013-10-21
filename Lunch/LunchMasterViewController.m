@@ -155,7 +155,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cellForRowAtIndexPath %ld", (long)indexPath.row);
+    //NSLog(@"cellForRowAtIndexPath %ld", (long)indexPath.row);
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     NSLocale *locale = [NSLocale currentLocale];
