@@ -22,6 +22,10 @@
 		5F21F78C17FC6EE300DA3D16 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F21F78B17FC6EE300DA3D16 /* Course.m */; };
 		5F21F78F17FC733000DA3D16 /* LunchDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F21F78E17FC733000DA3D16 /* LunchDataController.m */; };
 		5F886C241816587B008C7A8C /* ExtendNSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F886C231816587B008C7A8C /* ExtendNSLog.m */; };
+		5F886C261816F6D1008C7A8C /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F886C251816F6D0008C7A8C /* AppIcon.png */; };
+		5F886C281816F6D9008C7A8C /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F886C271816F6D9008C7A8C /* AppIcon@2x.png */; };
+		5F886C321816FFA9008C7A8C /* Lunch35x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F886C311816FFA9008C7A8C /* Lunch35x.png */; };
+		5F886C3418170036008C7A8C /* Place35x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F886C3318170035008C7A8C /* Place35x.png */; };
 		5F8FC1D21812D8F2005E9CF5 /* LunchTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8FC1D11812D8F2005E9CF5 /* LunchTabBarController.m */; };
 		5F90ACAE17FED574009DB074 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACAD17FED574009DB074 /* 58.png */; };
 		5F90ACB017FF04AB009DB074 /* 26.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACAF17FF04AB009DB074 /* 26.png */; };
@@ -67,6 +71,10 @@
 		5F21F78E17FC733000DA3D16 /* LunchDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchDataController.m; sourceTree = "<group>"; };
 		5F886C221816587A008C7A8C /* ExtendNSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendNSLog.h; sourceTree = "<group>"; };
 		5F886C231816587B008C7A8C /* ExtendNSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendNSLog.m; sourceTree = "<group>"; };
+		5F886C251816F6D0008C7A8C /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		5F886C271816F6D9008C7A8C /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		5F886C311816FFA9008C7A8C /* Lunch35x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lunch35x.png; sourceTree = "<group>"; };
+		5F886C3318170035008C7A8C /* Place35x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Place35x.png; sourceTree = "<group>"; };
 		5F8FC1D01812D8F2005E9CF5 /* LunchTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunchTabBarController.h; sourceTree = "<group>"; };
 		5F8FC1D11812D8F2005E9CF5 /* LunchTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchTabBarController.m; sourceTree = "<group>"; };
 		5F90ACAD17FED574009DB074 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
@@ -161,8 +169,12 @@
 		5F21F76B17FC2CC700DA3D16 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F886C251816F6D0008C7A8C /* AppIcon.png */,
+				5F886C271816F6D9008C7A8C /* AppIcon@2x.png */,
 				5F90ACB917FF3820009DB074 /* SplashScreen.png */,
 				5F90ACB717FF3808009DB074 /* SplashScreen@2x.png */,
+				5F886C311816FFA9008C7A8C /* Lunch35x.png */,
+				5F886C3318170035008C7A8C /* Place35x.png */,
 				5F90ACB517FF06EB009DB074 /* 142.png */,
 				5F90ACB317FF05FC009DB074 /* 136.png */,
 				5F90ACB117FF059C009DB074 /* 146.png */,
@@ -294,6 +306,10 @@
 				5F90ACBA17FF3820009DB074 /* SplashScreen.png in Resources */,
 				5FCAEBD918044BDF003944C6 /* CoursePage.xib in Resources */,
 				5FCAEEA1180DAC79003944C6 /* location.gpx in Resources */,
+				5F886C261816F6D1008C7A8C /* AppIcon.png in Resources */,
+				5F886C281816F6D9008C7A8C /* AppIcon@2x.png in Resources */,
+				5F886C321816FFA9008C7A8C /* Lunch35x.png in Resources */,
+				5F886C3418170036008C7A8C /* Place35x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
