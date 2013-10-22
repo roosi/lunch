@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface Course : NSObject
-@property (nonatomic,copy) NSString *category;
-@property (nonatomic,copy) NSString *price;
-@property (nonatomic,copy) NSString *properties;
-@property (nonatomic,copy) NSString *titleFi;
-@property (nonatomic,copy) NSString *titleEn;
+@property (nonatomic,readonly) NSString *category;
+@property (nonatomic,readonly) NSString *price;
+@property (nonatomic,readonly) NSString *properties;
+@property (nonatomic,readonly) NSString *titleFi;
+@property (nonatomic,readonly) NSString *titleEn;
 
 -(id)initWithJson:(NSDictionary *)json;
 @end

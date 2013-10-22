@@ -33,8 +33,6 @@
 }
 
 - (void)restaurantMovingAway:(NSNotification *)notification {
-    NSLog(@"%@", notification);
-    
     UITabBarItem *tabBarItem = [[self.viewControllers objectAtIndex:1] tabBarItem];
     int current = tabBarItem.badgeValue.intValue;
     current -= 1;
@@ -47,8 +45,6 @@
 }
 
 - (void)restaurantClosing:(NSNotification *)notification {
-    NSLog(@"%@", notification);
-    
     UITabBarItem *tabBarItem = [[self.viewControllers objectAtIndex:1] tabBarItem];
     int current = tabBarItem.badgeValue.intValue;
     current += 1;

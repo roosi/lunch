@@ -30,17 +30,16 @@
     [super viewDidLoad];
     self.nearbyManager = [RestaurantNearbyManager sharedManager];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restaurantMovingAway:) name:RestaurantMovingAwayNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restaurantClosing:) name:RestaurantClosingNotification object:nil];
+    [self.nearbyManager addObserver:self forKeyPath:@"nearbyRestaurants" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
 }
 
-
-- (void)restaurantMovingAway:(NSNotification *)notification {
-    NSLog(@"%s", notification);
-}
-
-- (void)restaurantClosing:(NSNotification *)notification {
-    NSLog(@"%s", notification);
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"%@", keyPath);
+    if ([keyPath isEqualToString:@"nearbyRestaurants"])
+    {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

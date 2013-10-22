@@ -47,9 +47,9 @@
     [activityIndicator startAnimating];
      */
 
-    [self.dataController addObserver:self forKeyPath:@"courses" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+    [self.dataController addObserver:self forKeyPath:@"courses" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:nil];
     
-    [self.dataController addObserver:self forKeyPath:@"error" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+    [self.dataController addObserver:self forKeyPath:@"error" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated

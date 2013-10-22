@@ -82,7 +82,7 @@ static RestaurantNearbyManager* instance;
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
     NSLog(@"%@", restaurant.name);
     
-    [self.nearbyRestaurants addObject:restaurant];
+    [self insertObject:restaurant inNearbyRestaurantsAtIndex:[self countOfNearbyRestaurants]];
 
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:restaurant.name, @"Restaurant", nil];
     
@@ -108,7 +108,8 @@ static RestaurantNearbyManager* instance;
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
     NSLog(@"%@", restaurant.name);
     
-    [self.nearbyRestaurants removeObject:restaurant];
+    
+    [self removeObjectFromNearbyRestaurantsAtIndex:[self.nearbyRestaurants indexOfObject:restaurant]];
     
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:restaurant.name, @"Restaurant", nil];
     
@@ -144,5 +145,15 @@ static RestaurantNearbyManager* instance;
 - (Restaurant *) objectInNearbyRestaurantsAtIndex:(NSUInteger)index
 {
     return [self.nearbyRestaurants objectAtIndex:index];
+}
+
+- (void) insertObject:(Restaurant *)object inNearbyRestaurantsAtIndex:(NSUInteger)index
+{
+    [self.nearbyRestaurants insertObject:object atIndex:index];
+}
+
+- (void) removeObjectFromNearbyRestaurantsAtIndex:(NSUInteger)index
+{
+    [self.nearbyRestaurants removeObjectAtIndex:index];
 }
 @end

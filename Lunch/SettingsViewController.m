@@ -56,16 +56,6 @@
 
 -(void)locationPickerController:(LocationPickerController *)picker didFinishPickingLocation:(Restaurant *)restaurant
 {
-    /*
-    CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:restaurant.coordinate radius:500.0 identifier: [NSString stringWithFormat:@"%i", restaurant.id]];
-    
-    for (CLRegion * monitored in [self.locationManager monitoredRegions])
-    {
-        [self.locationManager stopMonitoringForRegion:monitored];
-    }
-    [self.locationManager startMonitoringForRegion:region];
-     */
-
     self.locationLabel.text = restaurant.name;
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -19,5 +19,4 @@
 -(NSUInteger) countOfRestaurants;
 -(Restaurant *) objectInRestaurantsAtIndex:(NSUInteger)index;
 -(Restaurant *) objectInRestaurantsWithId:(NSUInteger)id;
--(void) retrieveRestaurants: (void(^)())callback;
 @end

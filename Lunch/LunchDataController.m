@@ -36,7 +36,8 @@ static LunchDataController* instance;
 -(void)setDate:(NSDate *)date
 {
     NSLog(@"%@", date);
-    if (_date != date) {
+    //if (_date != date)
+    {
         _date = date;
         if (_restaurant != nil) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
@@ -115,7 +116,6 @@ static LunchDataController* instance;
                 failure(error);
             }
         }
-        
     }];
 }
 

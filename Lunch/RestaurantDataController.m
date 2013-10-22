@@ -39,17 +39,6 @@ static RestaurantDataController *instance;
     return nil;
 }
 
--(void) retrieveRestaurants:(void (^)())callback {
-    
-    //TODO
-    
-    if (callback)
-    {
-        callback();
-    }
-
-}
-
 -(void) setRestaurants:(NSMutableArray *)restaurants
 {
     if (_restaurants != restaurants) {

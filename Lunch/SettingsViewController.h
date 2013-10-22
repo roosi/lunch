@@ -11,7 +11,7 @@
 
 @interface SettingsViewController : UITableViewController <LocationPickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
-- (IBAction)nearbyReminderChanged:(id)sender;
 @property (weak, nonatomic) IBOutlet UISwitch *nearbyReminderSwitch;
 
+- (IBAction)nearbyReminderChanged:(id)sender;
 @end
