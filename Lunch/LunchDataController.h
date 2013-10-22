@@ -13,6 +13,9 @@
 
 @interface LunchDataController : NSObject
 @property (nonatomic, copy) NSMutableArray *courses;
+@property (nonatomic) NSDate *date;
+@property (nonatomic) Restaurant *restaurant;
+@property (nonatomic) NSError *error;
 
 +(LunchDataController *) sharedController;
 

@@ -49,24 +49,25 @@
      */
 
     [self.dataController addObserver:self forKeyPath:@"courses" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+    
+    [self.dataController addObserver:self forKeyPath:@"error" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self retrieveLunch:dateShown];
+    [self setMenu:dateShown];
 }
 
 - (void)goToday:(id)sender
 {
-    [self retrieveLunch:[NSDate date]];
+    [self setMenu:[NSDate date]];
 }
 
-- (void)retrieveLunch:(NSDate *)date
+- (void)setMenu:(NSDate *)date
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [self.activityIndicator startAnimating];
+    [self startProgress];
     
     dateShown = date;
     
@@ -102,19 +103,18 @@
     else {
         self.title = dateShown.description;
     }
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-        [self.dataController retrieveLunchWithDate:dateShown restaurant: restaurant success:^{
-            NSLog(@"success");
-            [self lunchRetrived];
-        } failure:^(NSError *error) {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-        }];
-    });
+
+    [self.dataController setRestaurant:restaurant];
+    [self.dataController setDate:dateShown];
 }
 
-- (void)lunchRetrived
+- (void)startProgress
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self.activityIndicator startAnimating];
+}
+
+- (void)stopProgress
 {
     if ([self.dataController countOfCourses] == 0) {
         UILabel *emptyView = [[UILabel alloc] initWithFrame:self.tableView.frame];
@@ -125,18 +125,23 @@
     else {
         self.tableView.backgroundView = nil;
     }
-    
-    [self.activityIndicator performSelectorOnMainThread:@selector(stopAnimating) withObject:nil waitUntilDone:NO];
+
+    [self.activityIndicator stopAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    //NSLog(@"%s %@", __PRETTY_FUNCTION__, keyPath);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, keyPath);
     if ([keyPath isEqualToString:@"courses"])
     {
         //NSLog(@"%@", change.description);
+        [self stopProgress];
         [self.tableView reloadData];
+    }
+    else if ([keyPath isEqualToString:@"error"]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:self.dataController.error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }
     else
     {
@@ -160,7 +165,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSUInteger count = [self.dataController countOfCourses];
-    NSLog(@"numberOfRowsInSection %ld", (long)count);
+    //NSLog(@"numberOfRowsInSection %ld", (long)count);
     
     return count;
 }
@@ -227,7 +232,7 @@
     
     dateShown = [gregorian dateByAddingComponents:components toDate:dateShown options:0];
     
-    [self retrieveLunch:dateShown];
+    [self setMenu:dateShown];
 }
 
 - (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender {
@@ -239,6 +244,6 @@
     
     dateShown = [gregorian dateByAddingComponents:components toDate:dateShown options:0];
     
-    [self retrieveLunch:dateShown];
+    [self setMenu:dateShown];
 }
 @end

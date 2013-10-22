@@ -13,10 +13,11 @@
 @interface LunchMasterViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) LunchDataController *dataController;
-- (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender;
-- (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *todayButton;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantLabel;
 
+- (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender;
+- (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender;
 @end

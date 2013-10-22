@@ -33,6 +33,50 @@ static LunchDataController* instance;
     return nil;
 }
 
+-(void)setDate:(NSDate *)date
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if (_date != date) {
+        _date = date;
+        if (_restaurant != nil) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+                [self retrieveLunchWithDate:_date restaurant: _restaurant success:^{
+                    NSLog(@"success");
+                    
+                } failure:^(NSError *error) {
+                    NSLog(@"error");
+                    self.error = error;
+                }];
+            });
+        }
+    }
+}
+
+-(void)setCourses:(NSMutableArray *)courses {
+    if(_courses != courses) {
+        _courses = [courses mutableCopy];
+    }
+}
+
+-(NSUInteger)countOfCourses {
+    return [self.courses count];
+}
+
+-(Course *)objectInCoursesAtIndex:(NSUInteger)index {
+    return [self.courses objectAtIndex:index];
+}
+
+// KVC
+-(void) insertObject:(Course *)object inCoursesAtIndex:(NSUInteger)index
+{
+    [self.courses insertObject:object atIndex:index];
+}
+
+-(void) removeObjectFromCoursesAtIndex:(NSUInteger)index
+{
+    [self.courses removeObjectAtIndex:index];
+}
+
 -(void) retrieveLunchWithDate:(NSDate *)date restaurant:(Restaurant *)restaurant success: (void(^)())success failure: (void(^)(NSError *error)) failure
 {
     //http://www.sodexo.fi/ruokalistat/output/daily_json/444/2013/10/2/fi
@@ -53,7 +97,11 @@ static LunchDataController* instance;
             //NSLog(@"JSON: %@", jsonDict);
             NSArray *courses = [jsonDict objectForKey:@"courses"];
             
+            //TODO auto?
+            [self willChangeValueForKey:@"courses"];
             [self.courses removeAllObjects];
+            [self didChangeValueForKey:@"courses"];
+            
             for(id object in courses) {
                 Course *course = [[Course alloc] initWithJson:object];
                 [self insertObject:course inCoursesAtIndex:[self countOfCourses]];
@@ -73,28 +121,4 @@ static LunchDataController* instance;
     }];
 }
 
-// KVC
--(void) insertObject:(Course *)object inCoursesAtIndex:(NSUInteger)index
-{
-    [self.courses insertObject:object atIndex:index];
-}
-
--(void) removeObjectFromCoursesAtIndex:(NSUInteger)index
-{
-    [self.courses removeObjectAtIndex:index];
-}
-
--(void)setCourses:(NSMutableArray *)courses {
-    if(_courses != courses) {
-        _courses = [courses mutableCopy];
-    }
-}
-
--(NSUInteger)countOfCourses {
-    return [self.courses count];
-}
-
--(Course *)objectInCoursesAtIndex:(NSUInteger)index {
-    return [self.courses objectAtIndex:index];
-}
 @end
