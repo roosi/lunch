@@ -31,8 +31,31 @@
 
     self.todayButton.target = self;
     self.todayButton.action = @selector(goToday:);
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     
-    //[self retrieveLunch:dateShown];
+	// Do any additional setup after loading the view, typically from a nib.
+    
+    /*
+    activityIndicator = [[UIActivityIndicatorView alloc]init];
+    activityIndicator.center = self.tableView.center;
+    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [activityIndicator setColor:[UIColor blackColor]];
+    [self.tableView addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+     */
+
+    [self.dataController addObserver:self forKeyPath:@"courses" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self retrieveLunch:dateShown];
 }
 
 - (void)goToday:(id)sender
@@ -44,7 +67,7 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [self.activityIndicator startAnimating];
-
+    
     dateShown = date;
     
     RestaurantDataController *dataController = [RestaurantDataController sharedController];
@@ -80,13 +103,13 @@
         self.title = dateShown.description;
     }
     
-    [self.dataController.courses removeAllObjects];
-    [self.tableView reloadData];
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-        [self.dataController retrieveLunchWithDate:dateShown restaurant: restaurant completion: ^{
-            NSLog(@"Completed");
+        [self.dataController retrieveLunchWithDate:dateShown restaurant: restaurant success:^{
+            NSLog(@"success");
             [self lunchRetrived];
+        } failure:^(NSError *error) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
         }];
     });
 }
@@ -103,33 +126,22 @@
         self.tableView.backgroundView = nil;
     }
     
-    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [self.activityIndicator performSelectorOnMainThread:@selector(stopAnimating) withObject:nil waitUntilDone:NO];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-- (void)viewDidLoad
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    [super viewDidLoad];
-    
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    /*
-    activityIndicator = [[UIActivityIndicatorView alloc]init];
-    activityIndicator.center = self.tableView.center;
-    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [activityIndicator setColor:[UIColor blackColor]];
-    [self.tableView addSubview:activityIndicator];
-    [activityIndicator startAnimating];
-     */
-
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self retrieveLunch:dateShown];
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, keyPath);
+    if ([keyPath isEqualToString:@"courses"])
+    {
+        //NSLog(@"%@", change.description);
+        [self.tableView reloadData];
+    }
+    else
+    {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
    
 - (void)didReceiveMemoryWarning

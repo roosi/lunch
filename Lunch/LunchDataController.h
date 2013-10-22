@@ -18,6 +18,5 @@
 
 -(NSUInteger) countOfCourses;
 -(Course *) objectInCoursesAtIndex:(NSUInteger)index;
--(void) retrieveLunchWithDate:(NSDate*)date completion: (void(^)())callback;
--(void) retrieveLunchWithDate:(NSDate*)date restaurant:(Restaurant *)restaurant  completion: (void(^)())callback;
+-(void) retrieveLunchWithDate:(NSDate*)date restaurant:(Restaurant *)restaurant success:(void(^)()) success failure:(void(^)(NSError *error)) failure;
 @end

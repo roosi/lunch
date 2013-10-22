@@ -33,74 +33,7 @@ static LunchDataController* instance;
     return nil;
 }
 
--(void) retrieveLunchWithDate:(NSDate*)date completion: (void(^)())callback {
-    NSLog(@"retrieveLunchWithDate");
-
-    //http://www.sodexo.fi/ruokalistat/output/daily_json/444/2013/10/2/fi
-    
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
-    NSString *urlString = [NSString stringWithFormat:@"http://www.sodexo.fi/ruokalistat/output/daily_json/444/%ld/%ld/%ld/fi", (long)components.year,(long)components.month,(long)components.day];
-
-    NSLog(@"%@", urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * response, NSData *data, NSError *error) {
-
-        if(!error) {
-            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
-                                                                 options:kNilOptions
-                                                                   error:&error];
-            //NSLog(@"JSON: %@", jsonDict);
-            NSArray *courses = [jsonDict objectForKey:@"courses"];
-        
-            [self.courses removeAllObjects];
-            for(id object in courses) {
-                Course *course = [[Course alloc] initWithJson:object];
-                [self.courses addObject:course];
-            }
-        
-            if (callback) {
-                callback();
-            }
-        }
-        else {
-            NSLog(@"\nJSON: %@ \n Error: %@", data, error);
-        }
-        
-    }];
-    /*
-    NSError *error = nil;
-    NSString *json = [NSString stringWithContentsOfURL:url
-                                              encoding:NSASCIIStringEncoding
-                                                 error:&error];
-                             
-    if(!error) {
-        NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                 options:kNilOptions
-                                                                   error:&error];
-        NSLog(@"JSON: %@", jsonDict);
-        NSArray *courses = [jsonDict objectForKey:@"courses"];
-        
-        [self.courses removeAllObjects];
-        for(id object in courses) {
-            Course *course = [[Course alloc] initWithJson:object];
-            [self.courses addObject:course];
-        }
-        
-        if (callback) {
-            callback();
-        }
-    }
-    else {
-        NSLog(@"\nJSON: %@ \n Error: %@", json, error);
-        
-    }
-     */
-}
-
--(void) retrieveLunchWithDate:(NSDate *)date restaurant:(Restaurant *)restaurant completion:(void (^)())callback
+-(void) retrieveLunchWithDate:(NSDate *)date restaurant:(Restaurant *)restaurant success: (void(^)())success failure: (void(^)(NSError *error)) failure
 {
     //http://www.sodexo.fi/ruokalistat/output/daily_json/444/2013/10/2/fi
     
@@ -123,18 +56,32 @@ static LunchDataController* instance;
             [self.courses removeAllObjects];
             for(id object in courses) {
                 Course *course = [[Course alloc] initWithJson:object];
-                [self.courses addObject:course];
+                [self insertObject:course inCoursesAtIndex:[self countOfCourses]];
             }
             
-            if (callback) {
-                callback();
+            if (success) {
+                success();
             }
         }
         else {
             NSLog(@"\nJSON: %@ \n Error: %@", data, error);
+            if (failure) {
+                failure(error);
+            }
         }
         
     }];
+}
+
+// KVC
+-(void) insertObject:(Course *)object inCoursesAtIndex:(NSUInteger)index
+{
+    [self.courses insertObject:object atIndex:index];
+}
+
+-(void) removeObjectFromCoursesAtIndex:(NSUInteger)index
+{
+    [self.courses removeObjectAtIndex:index];
 }
 
 -(void)setCourses:(NSMutableArray *)courses {
