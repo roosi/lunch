@@ -77,12 +77,12 @@
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, region.description);
+    NSLog(@"%@", region.description);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, region.description);
+    NSLog(@"%@", region.description);
 }
 
 - (IBAction)nearbyReminderChanged:(id)sender {

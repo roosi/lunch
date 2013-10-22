@@ -10,7 +10,7 @@
 
 @class LunchDataController;
 
-@interface LunchMasterViewController : UITableViewController
+@interface LunchViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) LunchDataController *dataController;
 

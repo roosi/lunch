@@ -35,16 +35,14 @@ static LunchDataController* instance;
 
 -(void)setDate:(NSDate *)date
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%@", date);
     if (_date != date) {
         _date = date;
         if (_restaurant != nil) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
                 [self retrieveLunchWithDate:_date restaurant: _restaurant success:^{
-                    NSLog(@"success");
-                    
+                    _error = nil;
                 } failure:^(NSError *error) {
-                    NSLog(@"error");
                     self.error = error;
                 }];
             });
@@ -112,7 +110,7 @@ static LunchDataController* instance;
             }
         }
         else {
-            NSLog(@"\nJSON: %@ \n Error: %@", data, error);
+            //NSLog(@"\nJSON: %@ \n Error: %@", data, error);
             if (failure) {
                 failure(error);
             }

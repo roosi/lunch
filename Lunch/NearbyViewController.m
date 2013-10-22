@@ -26,8 +26,7 @@
 }
 
 - (void)viewDidLoad
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);     
+{  
     [super viewDidLoad];
     self.nearbyManager = [RestaurantNearbyManager sharedManager];
     
@@ -37,16 +36,16 @@
 
 
 - (void)restaurantMovingAway:(NSNotification *)notification {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s", notification);
 }
 
 - (void)restaurantClosing:(NSNotification *)notification {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s", notification);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__); 
+    NSLog(@"");
     [super viewWillAppear:animated];
 
     UIViewController *viewController = [self.tabBarController.viewControllers objectAtIndex:1];
@@ -73,13 +72,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
     return [self.nearbyManager countOfNearbyRestaurants];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);  
     static NSString *CellIdentifier = @"NearbyRestaurantCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     

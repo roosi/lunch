@@ -33,7 +33,7 @@
 }
 
 - (void)restaurantMovingAway:(NSNotification *)notification {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%@", notification);
     
     UITabBarItem *tabBarItem = [[self.viewControllers objectAtIndex:1] tabBarItem];
     int current = tabBarItem.badgeValue.intValue;
@@ -47,7 +47,7 @@
 }
 
 - (void)restaurantClosing:(NSNotification *)notification {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%@", notification);
     
     UITabBarItem *tabBarItem = [[self.viewControllers objectAtIndex:1] tabBarItem];
     int current = tabBarItem.badgeValue.intValue;

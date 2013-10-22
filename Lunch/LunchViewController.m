@@ -6,21 +6,20 @@
 //  Copyright (c) 2013 Jouni Nurmi. All rights reserved.
 //
 
-#import "LunchMasterViewController.h"
+#import "LunchViewController.h"
 
-#import "LunchDetailViewController.h"
-
+#import "CourseViewController.h"
 #import "LunchDataController.h"
 #import "RestaurantDataController.h"
 #import "Restaurant.h"
 #import "Course.h"
 
-@interface LunchMasterViewController () {
+@interface LunchViewController () {
     NSDate *dateShown;
 }
 @end
 
-@implementation LunchMasterViewController
+@implementation LunchViewController
 
 - (void)awakeFromNib
 {
@@ -132,7 +131,7 @@
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, keyPath);
+    //NSLog(@"%@", keyPath);
     if ([keyPath isEqualToString:@"courses"])
     {
         //NSLog(@"%@", change.description);

@@ -44,7 +44,6 @@ static RestaurantNearbyManager* instance;
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);    
     CLLocation *location = [locations lastObject];
     
     [self.locationManager stopUpdatingLocation];
@@ -63,7 +62,6 @@ static RestaurantNearbyManager* instance;
 
 - (void) startMonitoring
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
     NSArray *restaurants = [[RestaurantDataController sharedController] restaurants];
     for (Restaurant *restaurant in restaurants) {
         CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:restaurant.coordinate radius:500.0 identifier: [NSString stringWithFormat:@"%i", restaurant.id]];
@@ -73,7 +71,6 @@ static RestaurantNearbyManager* instance;
 
 - (void) stopMonitoring
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);    
     for (CLRegion * monitored in [self.locationManager monitoredRegions])
     {
         [self.locationManager stopMonitoringForRegion:monitored];
@@ -83,7 +80,7 @@ static RestaurantNearbyManager* instance;
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, restaurant.name);
+    NSLog(@"%@", restaurant.name);
     
     [self.nearbyRestaurants addObject:restaurant];
 
@@ -109,7 +106,7 @@ static RestaurantNearbyManager* instance;
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
     Restaurant *restaurant = [[RestaurantDataController sharedController] objectInRestaurantsWithId:region.identifier.intValue];
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, restaurant.name);
+    NSLog(@"%@", restaurant.name);
     
     [self.nearbyRestaurants removeObject:restaurant];
     

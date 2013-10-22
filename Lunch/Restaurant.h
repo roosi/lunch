@@ -10,8 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface Restaurant : NSObject
-@property (nonatomic) NSUInteger id;
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, readonly) NSUInteger id;
+@property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 -(id) initWithId:(int)id name:(NSString *) name;

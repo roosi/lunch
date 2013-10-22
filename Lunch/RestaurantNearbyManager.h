@@ -16,10 +16,10 @@ extern NSString * const RestaurantMovingAwayNotification;
 extern NSString * const RestaurantClosingNotification;
 
 @property (nonatomic, copy) NSMutableArray *nearbyRestaurants;
-- (NSUInteger) countOfNearbyRestaurants;
-- (Restaurant *) objectInNearbyRestaurantsAtIndex:(NSUInteger)index;
 
 + (RestaurantNearbyManager *) sharedManager;
 - (void) startMonitoring;
 - (void) stopMonitoring;
+- (NSUInteger) countOfNearbyRestaurants;
+- (Restaurant *) objectInNearbyRestaurantsAtIndex:(NSUInteger)index;
 @end
