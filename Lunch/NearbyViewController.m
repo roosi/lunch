@@ -9,6 +9,7 @@
 #import "NearbyViewController.h"
 #import "Restaurant.h"
 #import "RestaurantNearbyManager.h"
+#import "RestaurantViewController.h"
 
 @interface NearbyViewController ()
 @property (nonatomic, strong) RestaurantNearbyManager* nearbyManager;
@@ -84,5 +85,15 @@
     cell.textLabel.text = restaurant.name;
     
     return cell;
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"ShowRestaurant"]) {
+        NSLog(@"ShowRestaurant");
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Restaurant* restaurant = [self.nearbyManager objectInNearbyRestaurantsAtIndex:indexPath.row];
+        
+        [[segue destinationViewController] setRestaurant:restaurant];
+    }
 }
 @end

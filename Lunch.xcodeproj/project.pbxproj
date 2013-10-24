@@ -27,6 +27,8 @@
 		5F886C321816FFA9008C7A8C /* Lunch35x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F886C311816FFA9008C7A8C /* Lunch35x.png */; };
 		5F886C3418170036008C7A8C /* Place35x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F886C3318170035008C7A8C /* Place35x.png */; };
 		5F8FC1D21812D8F2005E9CF5 /* LunchTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8FC1D11812D8F2005E9CF5 /* LunchTabBarController.m */; };
+		5F901EE4181833B200E743CC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F901EE3181833B200E743CC /* MapKit.framework */; };
+		5F901EE7181834FC00E743CC /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F901EE6181834FC00E743CC /* RestaurantViewController.m */; };
 		5F90ACAE17FED574009DB074 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACAD17FED574009DB074 /* 58.png */; };
 		5F90ACB017FF04AB009DB074 /* 26.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACAF17FF04AB009DB074 /* 26.png */; };
 		5F90ACB217FF059C009DB074 /* 146.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F90ACB117FF059C009DB074 /* 146.png */; };
@@ -77,6 +79,9 @@
 		5F886C3318170035008C7A8C /* Place35x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Place35x.png; sourceTree = "<group>"; };
 		5F8FC1D01812D8F2005E9CF5 /* LunchTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunchTabBarController.h; sourceTree = "<group>"; };
 		5F8FC1D11812D8F2005E9CF5 /* LunchTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchTabBarController.m; sourceTree = "<group>"; };
+		5F901EE3181833B200E743CC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5F901EE5181834FC00E743CC /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
+		5F901EE6181834FC00E743CC /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
 		5F90ACAD17FED574009DB074 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
 		5F90ACAF17FF04AB009DB074 /* 26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 26.png; sourceTree = "<group>"; };
 		5F90ACB117FF059C009DB074 /* 146.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 146.png; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F901EE4181833B200E743CC /* MapKit.framework in Frameworks */,
 				5FCAEE9F180D9B1B003944C6 /* CoreLocation.framework in Frameworks */,
 				5F21F76517FC2CC700DA3D16 /* UIKit.framework in Frameworks */,
 				5F21F76717FC2CC700DA3D16 /* Foundation.framework in Frameworks */,
@@ -143,6 +149,7 @@
 		5F21F76317FC2CC700DA3D16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F901EE3181833B200E743CC /* MapKit.framework */,
 				5F21F76417FC2CC700DA3D16 /* UIKit.framework */,
 				5F21F76617FC2CC700DA3D16 /* Foundation.framework */,
 				5F21F76817FC2CC700DA3D16 /* CoreGraphics.framework */,
@@ -235,6 +242,8 @@
 				5FCAEC411805A8DA003944C6 /* LocationPickerController.m */,
 				5FA647E71811430A007772CD /* NearbyViewController.h */,
 				5FA647E81811430A007772CD /* NearbyViewController.m */,
+				5F901EE5181834FC00E743CC /* RestaurantViewController.h */,
+				5F901EE6181834FC00E743CC /* RestaurantViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -333,6 +342,7 @@
 				5FCAEE6C180C51ED003944C6 /* SettingsViewController.m in Sources */,
 				5FA647E518110B4A007772CD /* RestaurantNearbyManager.m in Sources */,
 				5FA647E91811430B007772CD /* NearbyViewController.m in Sources */,
+				5F901EE7181834FC00E743CC /* RestaurantViewController.m in Sources */,
 				5F8FC1D21812D8F2005E9CF5 /* LunchTabBarController.m in Sources */,
 				5F886C241816587B008C7A8C /* ExtendNSLog.m in Sources */,
 			);
