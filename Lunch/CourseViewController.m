@@ -23,20 +23,35 @@
     // Do any additional setup after loading the view.
     
     self.dataController = [LunchDataController sharedController];
+    [self createPages];
+    [self configureView];
+    
+    // go to selected course
+    CGRect frame;
+    frame.origin.x = self.scrollView.frame.size.width * self.index;
+    frame.origin.y = 0;
+    frame.size = self.scrollView.frame.size;
+    [self.scrollView scrollRectToVisible:frame animated:NO];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)createPages
+{
     NSLog(@"%d", [self.dataController countOfCourses]);
+    
     for (int i = 0; i < [self.dataController countOfCourses]; i++) {
         Course *course = [self.dataController objectInCoursesAtIndex:i];
         
         CoursePage *coursePage = [CoursePage initWithCourse:course];
-
+        
         CGRect frame;
         frame.origin.x = self.scrollView.frame.size.width * i;
         frame.origin.y = 0;
         frame.size = self.scrollView.frame.size;
-
+        
         [coursePage setFrame:frame];
         [self.scrollView addSubview:coursePage];
     }
@@ -44,15 +59,6 @@
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * [self.dataController countOfCourses], self.scrollView.frame.size.height);
     
     [self.pageControl setNumberOfPages:[self.dataController countOfCourses]];
-    [self setIndex:self.index];
-    [self configureView];
-    
-    
-    CGRect frame;
-    frame.origin.x = self.scrollView.frame.size.width * self.index;
-    frame.origin.y = 0;
-    frame.size = self.scrollView.frame.size;
-    [self.scrollView scrollRectToVisible:frame animated:NO];
 }
 
 - (void)configureView
@@ -68,6 +74,7 @@
 
 - (void) viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     NSLog(@"");
 }
 
