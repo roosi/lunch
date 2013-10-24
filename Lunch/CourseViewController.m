@@ -13,29 +13,9 @@
 #import "CoursePage.h"
 
 @interface CourseViewController ()
-- (void)configureView;
 @end
 
 @implementation CourseViewController
-
--(void) setIndex:(NSUInteger)index
-{
-    NSLog(@"setIndex %d", index);
-    _index = index;
-    self.course = [self.dataController objectInCoursesAtIndex:index];
-    [self configureView];
-}
-
-- (void)configureView
-{
-    NSLog(@"configureView %d", self.index);
-    // Update the user interface for the detail item.
-    
-    if (self.course) {
-        [self setTitle:self.course.category];
-        [self.pageControl setCurrentPage:self.index];
-    }
-}
 
 - (void)viewDidLoad
 {
@@ -46,7 +26,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    NSLog(@"viewDidload %d", [self.dataController countOfCourses]);
+    NSLog(@"%d", [self.dataController countOfCourses]);
     for (int i = 0; i < [self.dataController countOfCourses]; i++) {
         Course *course = [self.dataController objectInCoursesAtIndex:i];
         
@@ -65,6 +45,7 @@
     
     [self.pageControl setNumberOfPages:[self.dataController countOfCourses]];
     [self setIndex:self.index];
+    [self configureView];
     
     
     CGRect frame;
@@ -72,6 +53,22 @@
     frame.origin.y = 0;
     frame.size = self.scrollView.frame.size;
     [self.scrollView scrollRectToVisible:frame animated:NO];
+}
+
+- (void)configureView
+{
+    NSLog(@"%d", self.index);
+    // Update the user interface for the detail item.
+    self.course = [self.dataController objectInCoursesAtIndex:self.index];
+    if (self.course) {
+        [self setTitle:self.course.category];
+        [self.pageControl setCurrentPage:self.index];
+    }
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"");
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,11 +85,12 @@
     
     if (self.index != page) {
         self.index = page;
+        [self configureView];
     }
 }
 
 - (IBAction)pageChanged:(id)sender {
-    NSLog(@"pageChanged %d", self.pageControl.currentPage);
+    NSLog(@"%d", self.pageControl.currentPage);
 
     CGRect frame;
     frame.origin.x = self.scrollView.frame.size.width * self.pageControl.currentPage;

@@ -81,7 +81,7 @@ static LunchDataController* instance;
     //http://www.sodexo.fi/ruokalistat/output/daily_json/444/2013/10/2/fi
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
-    NSString *urlString = [NSString stringWithFormat:@"http://www.sodexo.fi/ruokalistat/output/daily_json/%iu/%ld/%ld/%ld/fi", restaurant.id, (long)components.year,(long)components.month,(long)components.day];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.sodexo.fi/ruokalistat/output/daily_json/%u/%ld/%ld/%ld/fi", restaurant.id, (long)components.year,(long)components.month,(long)components.day];
     
     NSLog(@"%@", urlString);
     NSURL *url = [NSURL URLWithString:urlString];
